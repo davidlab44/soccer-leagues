@@ -32,7 +32,7 @@ class SoccerLeagueRepository() {
 
     private val apiService = ApiRequest.instance
 
-    fun requestMovieReviewList(league:String,liveData: MutableLiveData<SoccerLeagueResponse>) {
+    fun requestMovieReviewList(league: String, liveData: MutableLiveData<SoccerLeagueResponse>) {
         apiService.getMovieReviewListFromInternet(league).enqueue(object : Callback<SoccerLeagueResponse> {
             override fun onFailure(call: Call<SoccerLeagueResponse>, t: Throwable) {
                 Log.e(TAG_ON_FAILURE, t.printStackTrace().toString())
