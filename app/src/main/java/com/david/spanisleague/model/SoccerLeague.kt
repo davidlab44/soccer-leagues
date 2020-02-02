@@ -17,6 +17,8 @@ data class SoccerLeague(
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "id")
         var id: Int,
+        @SerializedName("idTeam")
+        var idTeam: String?,
         @SerializedName("strTeam")
         var strTeam: String?,
         @SerializedName("strStadium")

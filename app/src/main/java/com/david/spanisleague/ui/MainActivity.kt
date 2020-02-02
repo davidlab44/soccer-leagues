@@ -33,9 +33,9 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
         setContentView(R.layout.activity_main)
         setRecyclerViewSoccerLeagues("Spanish La Liga")
         launchDialogFragment(R.string.app_name,R.drawable.soccer_leagues)
-        val idMovieReview = SoccerLeagueDatabase.getMovieDatabase(this).getMovieDAO().getMovieReviewDetail(intent.getIntExtra(ID_MOVIE, 0))
+        val idMovieReview = SoccerLeagueDatabase.getMovieDatabase(this).getSoccerLeagueDAO().getSoccerLeagueDetail(intent.getIntExtra(ID_MOVIE, 0))
 
-        val idMovieReview2 = SoccerLeagueDatabase.getMovieDatabase(this).getMovieDAO().getMovieReviewDetail(intent.getIntExtra(ID_MOVIE, 0))
+        val idMovieReview2 = SoccerLeagueDatabase.getMovieDatabase(this).getSoccerLeagueDAO().getSoccerLeagueDetail(intent.getIntExtra(ID_MOVIE, 0))
 
 
     }

@@ -3,7 +3,6 @@ package com.david.spanisleague.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
@@ -31,19 +30,16 @@ class TeamDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(com.david.spanisleague.R.layout.detail_item)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val idMovieReview = getMovieDatabase(this).getMovieDAO().getMovieReviewDetail(intent.getIntExtra(ID_MOVIE, 0))
-        bindMovieReview(idMovieReview)
-        requestNextFiveEvents()
+        val idSoccerLeague = getMovieDatabase(this).getSoccerLeagueDAO().getSoccerLeagueDetail(intent.getIntExtra(ID_MOVIE, 0))
+        bindMovieReview(idSoccerLeague)
+        requestNextFiveEvents(idSoccerLeague)
     }
 
-    private fun requestNextFiveEvents() {
+    private fun requestNextFiveEvents(soccerLeague: SoccerLeague) {
         teamRepository = TeamRepository(this)
-        teamRepository.requestTeamReviewList()
-        teamRepository.getTeamReviewList()
-        Log.e("TeamEvents remoto", "aqui: " + teamRepository.requestTeamReviewList())
-        Log.e("TeamEvents local", "aqui: " + teamRepository.getTeamReviewList())
-        Log.e("TeamEvents local2", "aqui: " + teamRepository.getTeamReviewList())
-        adapter = ArrayAdapter(application.applicationContext, android.R.layout.simple_list_item_1, teamRepository.requestTeamReviewList())
+        //teamRepository.requestTeamReviewList()
+        //teamRepository.getTeamReviewList()
+        adapter = ArrayAdapter(application.applicationContext, android.R.layout.simple_list_item_1, teamRepository.requestTeamReviewList(soccerLeague.idTeam))
         roadReferenceListView.adapter = adapter
     }
 

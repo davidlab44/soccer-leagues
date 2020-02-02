@@ -23,8 +23,8 @@ class TeamRepository(private val context: Context) {
     private val apiService = ApiService.instance
     private val movieDatabase: TeamDao get() = SoccerLeagueDatabase.getMovieDatabase(context).getTeamEventDAO()
 
-    fun requestTeamReviewList(): List<TeamReview> {
-        apiService.getTeamListFromInternet("134301").enqueue(object : Callback<TeamResponse> {
+    fun requestTeamReviewList(idTeam:String?): List<TeamReview> {
+        apiService.getTeamListFromInternet(idTeam).enqueue(object : Callback<TeamResponse> {
             override fun onResponse(callTeamResponse: Call<TeamResponse>, response: Response<TeamResponse>) {
                 when (response.code()) {
                     200 -> {

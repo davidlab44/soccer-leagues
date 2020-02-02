@@ -23,7 +23,7 @@ interface ApiService {
     fun getMovieReviewListFromInternet(@Query("l") l: String): Call<SoccerLeagueResponse>
 
     @GET("api/v1/json/1/eventsnext.php?")
-    fun getTeamListFromInternet(@Query("id") id: String): Call<TeamResponse>
+    fun getTeamListFromInternet(@Query("id") id: String?): Call<TeamResponse>
 
     companion object {
         val instance: ApiService = Retrofit.Builder()

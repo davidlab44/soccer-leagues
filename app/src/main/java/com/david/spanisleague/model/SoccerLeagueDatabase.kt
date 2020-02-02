@@ -14,10 +14,10 @@ import androidx.room.RoomDatabase
  * @author david.mazo
  */
 
-@Database(entities = [SoccerLeague::class, TeamReview::class], version = 13, exportSchema = false)
+@Database(entities = [SoccerLeague::class, TeamReview::class], version = 14, exportSchema = false)
 abstract class SoccerLeagueDatabase : RoomDatabase() {
 
-    abstract fun getMovieDAO(): SoccerLeagueDao
+    abstract fun getSoccerLeagueDAO(): SoccerLeagueDao
     abstract fun getTeamEventDAO(): TeamDao
 
     companion object {

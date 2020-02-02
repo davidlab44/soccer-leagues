@@ -22,7 +22,7 @@ interface SoccerLeagueDao {
     fun getMovieReviewList(): List<SoccerLeague>
 
     @Query("SELECT * FROM soccer_league WHERE soccer_league.id=:id")
-    fun getMovieReviewDetail(id: Int): SoccerLeague
+    fun getSoccerLeagueDetail(id: Int): SoccerLeague
 
     @Query("DELETE FROM soccer_league")
     fun deleteAllSoccerLeague()
