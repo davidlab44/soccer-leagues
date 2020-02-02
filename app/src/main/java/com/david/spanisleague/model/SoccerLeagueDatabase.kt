@@ -21,7 +21,7 @@ abstract class SoccerLeagueDatabase : RoomDatabase() {
     abstract fun getTeamEventDAO(): TeamDao
 
     companion object {
-        fun getMovieDatabase(context: Context) = Room.databaseBuilder(context.applicationContext,
+        fun getSoccerLeague(context: Context) = Room.databaseBuilder(context.applicationContext,
                 SoccerLeagueDatabase::class.java, "SoccerLeagueDatabase")
                 .allowMainThreadQueries()
                 .build()

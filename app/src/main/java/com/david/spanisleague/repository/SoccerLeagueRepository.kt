@@ -24,7 +24,7 @@ import retrofit2.Response
 class SoccerLeagueRepository(private val context: Context) {
 
     private val apiService = ApiService.instance
-    private val soccerLeagueDatabase: SoccerLeagueDao get() = SoccerLeagueDatabase.getMovieDatabase(context).getSoccerLeagueDAO()
+    private val soccerLeagueDatabase: SoccerLeagueDao get() = SoccerLeagueDatabase.getSoccerLeague(context).getSoccerLeagueDAO()
 
     fun requestMovieReviewList(league:String): List<SoccerLeague> {
         apiService.getMovieReviewListFromInternet(league).enqueue(object : Callback<SoccerLeagueResponse> {
@@ -54,10 +54,10 @@ class SoccerLeagueRepository(private val context: Context) {
     }
 
     fun getMovieReviewList(): List<SoccerLeague> {
-        return SoccerLeagueDatabase.getMovieDatabase(context).getSoccerLeagueDAO().getMovieReviewList()
+        return SoccerLeagueDatabase.getSoccerLeague(context).getSoccerLeagueDAO().getMovieReviewList()
     }
 
     fun deleteMovieReviewList() {
-        return SoccerLeagueDatabase.getMovieDatabase(context).getSoccerLeagueDAO().deleteAllSoccerLeague()
+        return SoccerLeagueDatabase.getSoccerLeague(context).getSoccerLeagueDAO().deleteAllSoccerLeague()
     }
 }

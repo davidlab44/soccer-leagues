@@ -14,7 +14,7 @@ import com.david.spanisleague.R
 import com.david.spanisleague.model.SoccerLeague
 import com.david.spanisleague.model.SoccerLeagueDatabase
 import com.david.spanisleague.repository.SoccerLeagueRepository
-import com.david.spanisleague.utils.ID_MOVIE
+import com.david.spanisleague.utils.ID_SOCCER_LEAGUE
 import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar.make
 import kotlinx.android.synthetic.main.activity_main.constraintLayoutMainActivity
@@ -33,9 +33,9 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
         setContentView(R.layout.activity_main)
         setRecyclerViewSoccerLeagues("Spanish La Liga")
         launchDialogFragment(R.string.app_name,R.drawable.soccer_leagues)
-        val idMovieReview = SoccerLeagueDatabase.getMovieDatabase(this).getSoccerLeagueDAO().getSoccerLeagueDetail(intent.getIntExtra(ID_MOVIE, 0))
+        val idMovieReview = SoccerLeagueDatabase.getSoccerLeague(this).getSoccerLeagueDAO().getSoccerLeagueDetail(intent.getIntExtra(ID_SOCCER_LEAGUE, 0))
 
-        val idMovieReview2 = SoccerLeagueDatabase.getMovieDatabase(this).getSoccerLeagueDAO().getSoccerLeagueDetail(intent.getIntExtra(ID_MOVIE, 0))
+        val idMovieReview2 = SoccerLeagueDatabase.getSoccerLeague(this).getSoccerLeagueDAO().getSoccerLeagueDetail(intent.getIntExtra(ID_SOCCER_LEAGUE, 0))
 
 
     }
@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
 
     override fun onItemClicked(soccerLeague: SoccerLeague) {
         val intent: Intent = TeamDetailActivity.createIntent(this@MainActivity)
-        intent.putExtra(ID_MOVIE, soccerLeague.id)
+        intent.putExtra(ID_SOCCER_LEAGUE, soccerLeague.id)
         startActivity(intent)
     }
 

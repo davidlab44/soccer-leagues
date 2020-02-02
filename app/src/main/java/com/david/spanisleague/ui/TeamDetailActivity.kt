@@ -8,10 +8,10 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.david.spanisleague.model.SoccerLeague
-import com.david.spanisleague.model.SoccerLeagueDatabase.Companion.getMovieDatabase
+import com.david.spanisleague.model.SoccerLeagueDatabase.Companion.getSoccerLeague
 import com.david.spanisleague.model.TeamReview
 import com.david.spanisleague.repository.TeamRepository
-import com.david.spanisleague.utils.ID_MOVIE
+import com.david.spanisleague.utils.ID_SOCCER_LEAGUE
 import kotlinx.android.synthetic.main.detail_item.*
 
 /**
@@ -30,20 +30,18 @@ class TeamDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(com.david.spanisleague.R.layout.detail_item)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val idSoccerLeague = getMovieDatabase(this).getSoccerLeagueDAO().getSoccerLeagueDetail(intent.getIntExtra(ID_MOVIE, 0))
-        bindMovieReview(idSoccerLeague)
+        val idSoccerLeague = getSoccerLeague(this).getSoccerLeagueDAO().getSoccerLeagueDetail(intent.getIntExtra(ID_SOCCER_LEAGUE, 0))
+        bindSoccerLeague(idSoccerLeague)
         requestNextFiveEvents(idSoccerLeague)
     }
 
     private fun requestNextFiveEvents(soccerLeague: SoccerLeague) {
         teamRepository = TeamRepository(this)
-        //teamRepository.requestTeamReviewList()
-        //teamRepository.getTeamReviewList()
         adapter = ArrayAdapter(application.applicationContext, android.R.layout.simple_list_item_1, teamRepository.requestTeamReviewList(soccerLeague.idTeam))
         roadReferenceListView.adapter = adapter
     }
 
-    private fun bindMovieReview(soccerLeague: SoccerLeague) {
+    private fun bindSoccerLeague(soccerLeague: SoccerLeague) {
         textViewStrTeam.text = soccerLeague.strTeam
         textViewStrDescriptionEN.text = soccerLeague.strDescriptionEN
         textViewIntFormedYear.text = "Foundated in ${soccerLeague.intFormedYear}"
