@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.david.spanisleague.R
 import com.david.spanisleague.model.SoccerLeague
+import com.david.spanisleague.model.SoccerLeagueDatabase
 import com.david.spanisleague.repository.SoccerLeagueRepository
 import com.david.spanisleague.utils.ID_MOVIE
 import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
@@ -32,6 +33,11 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
         setContentView(R.layout.activity_main)
         setRecyclerViewSoccerLeagues("Spanish La Liga")
         launchDialogFragment(R.string.app_name,R.drawable.soccer_leagues)
+        val idMovieReview = SoccerLeagueDatabase.getMovieDatabase(this).getMovieDAO().getMovieReviewDetail(intent.getIntExtra(ID_MOVIE, 0))
+
+        val idMovieReview2 = SoccerLeagueDatabase.getMovieDatabase(this).getMovieDAO().getMovieReviewDetail(intent.getIntExtra(ID_MOVIE, 0))
+
+
     }
 
     private fun launchDialogFragment(name: Int,image:Int) {

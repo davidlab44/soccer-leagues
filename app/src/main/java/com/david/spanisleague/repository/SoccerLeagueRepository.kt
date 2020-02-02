@@ -31,8 +31,10 @@ class SoccerLeagueRepository(private val context: Context) {
             override fun onResponse(callSoccerLeagueResponse: Call<SoccerLeagueResponse>, response: Response<SoccerLeagueResponse>) {
                 when (response.code()) {
                     200 -> {
-                        deleteMovieReviewList()
+                        //deleteMovieReviewList()
+                        val uno = getMovieReviewList()
                         insertMovieReviewListIntoDatabase(response)
+                        val dos = getMovieReviewList()
                     }
                     else -> Log.e(context.getString(R.string.error_tag), context.getString(R.string.error_response_code_different_to_200))
                 }
@@ -42,21 +44,25 @@ class SoccerLeagueRepository(private val context: Context) {
                 Log.e(context.getString(R.string.error_tag), t.printStackTrace().toString())
             }
         })
+        val tres = getMovieReviewList()
         return getMovieReviewList()
     }
 
     private fun insertMovieReviewListIntoDatabase(response: Response<SoccerLeagueResponse>) {
         if (response.body() != null) {
             for (soccerLeague: SoccerLeague in response.body()!!.teams) {
+                val cinco = soccerLeague
                 soccerLeagueDatabase.insertMovieReview(soccerLeague)
+                val size = getMovieReviewList().size
             }
+            val size2 = getMovieReviewList().size
         }
+        val size3 = getMovieReviewList().size
     }
 
     fun getMovieReviewList(): List<SoccerLeague> {
         return SoccerLeagueDatabase.getMovieDatabase(context).getMovieDAO().getMovieReviewList()
     }
-
 
     fun deleteMovieReviewList() {
         return SoccerLeagueDatabase.getMovieDatabase(context).getMovieDAO().deleteAllSoccerLeague()
