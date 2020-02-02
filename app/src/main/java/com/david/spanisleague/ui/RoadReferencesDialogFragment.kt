@@ -12,6 +12,10 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.DialogFragment
 import com.david.spanisleague.R
 import kotlinx.android.synthetic.main.road_references_dialog.dialogFragmentTitle
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class RoadReferencesDialogFragment(private val application: Application) : DialogFragment() {
 
@@ -56,5 +60,12 @@ class RoadReferencesDialogFragment(private val application: Application) : Dialo
 
     override fun onResume() {
         super.onResume()
+
+        GlobalScope.launch(context = Dispatchers.Main) {
+            delay(1999)
+            // 1.999 seconds is less than two seconds :D
+            dismiss()
+        }
+
     }
 }
