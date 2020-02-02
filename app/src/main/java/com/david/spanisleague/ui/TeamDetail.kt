@@ -16,13 +16,13 @@ import com.david.spanisleague.utils.ID_MOVIE
 import kotlinx.android.synthetic.main.detail_item.*
 
 /**
- * DetailMovieActivity
+ * TeamDetail
  *
  * Show the detail of a selected movie in the recyclerView of the MainActivity
  *
  * @author juan.rendon
  */
-class DetailMovieActivity : AppCompatActivity() {
+class TeamDetail : AppCompatActivity() {
 
     private lateinit var teamRepository: TeamRepository
     private lateinit var adapter: ArrayAdapter<TeamReview>
@@ -48,28 +48,25 @@ class DetailMovieActivity : AppCompatActivity() {
     }
 
     private fun bindMovieReview(movieReview: MovieReview) {
-        text_view_movie_title.text = movieReview.strTeam
-        text_view_title_release_date.text = movieReview.strStadium
-        text_view_summary.text = movieReview.strTeam
+        textViewStrTeam.text = movieReview.strTeam
+        textViewStrDescriptionEN.text = movieReview.strDescriptionEN
+        textViewIntFormedYear.text = movieReview.intFormedYear
         text_view_website.text = movieReview.strWebsite
         text_view_facebook.text = movieReview.strFacebook
         text_view_twitter.text = movieReview.strTwitter
         text_view_instagram.text = movieReview.strInstagram
-        //rating_bar_average.rating = movieReview.voteAverage.toFloat() / getFactorMovieReviewRating()
-        //text_view_average.text = (movieReview.voteAverage.toFloat() / getFactorMovieReviewRating()).toString()
-        Glide.with(image_view_movie_picture)
+        Glide.with(imageViewStrTeamBadge)
                 .load(movieReview.strTeamBadge)
                 .centerCrop()
                 .fitCenter()
-                .override(200, 200)
-                .into(image_view_movie_picture)
-        Glide.with(image_view_ic_star)
-                .load(movieReview.strTeamBadge)
+                .override(400, 400)
+                .into(imageViewStrTeamBadge)
+        Glide.with(imageViewStrTeamJersey)
+                .load(movieReview.strTeamJersey)
                 .centerCrop()
                 .fitCenter()
-                .override(200, 200)
-                .into(image_view_ic_star)
-
+                .override(400, 400)
+                .into(imageViewStrTeamJersey)
     }
 
     override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
@@ -84,7 +81,7 @@ class DetailMovieActivity : AppCompatActivity() {
 
     companion object {
         fun createIntent(context: Context): Intent {
-            return Intent(context, DetailMovieActivity::class.java)
+            return Intent(context, TeamDetail::class.java)
         }
     }
 }

@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -14,9 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.david.spanisleague.R
 import com.david.spanisleague.model.MovieReview
-import com.david.spanisleague.model.MovieReviewDatabase
 import com.david.spanisleague.repository.MovieRepository
-import com.david.spanisleague.repository.TeamRepository
 import com.david.spanisleague.utils.GRILL_LAYOUT
 import com.david.spanisleague.utils.ID_MOVIE
 import com.david.spanisleague.utils.LINEAR_LAYOUT
@@ -87,7 +84,7 @@ class MainActivity : AppCompatActivity(), MovieReviewEvents {
 
 
     override fun onItemClicked(movieReview: MovieReview) {
-        val intent: Intent = DetailMovieActivity.createIntent(this@MainActivity)
+        val intent: Intent = TeamDetail.createIntent(this@MainActivity)
         intent.putExtra(ID_MOVIE, movieReview.id)
         startActivity(intent)
     }
