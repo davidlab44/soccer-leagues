@@ -38,10 +38,10 @@ class MainActivity : AppCompatActivity(), MovieReviewEvents {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initComponents()
-        launchDialogFragment("SOCCER LEAGUE CONDOR")
+        launchDialogFragment(R.string.app_name,R.drawable.soccer_leagues)
     }
 
-    private fun launchDialogFragment(trigger: String) {
+    private fun launchDialogFragment(trigger: Int,image:Int) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val prev = supportFragmentManager.findFragmentByTag("dialog")
         if (prev != null) {
@@ -50,7 +50,8 @@ class MainActivity : AppCompatActivity(), MovieReviewEvents {
         fragmentTransaction.addToBackStack(null)
         val dialogFragment = RoadReferencesDialogFragment(application)
         val dialogFragmentBundle = Bundle()
-        dialogFragmentBundle.putString("trigger", trigger)
+        dialogFragmentBundle.putInt("trigger", trigger)
+        dialogFragmentBundle.putInt("image", image)
         dialogFragment.arguments = dialogFragmentBundle
         dialogFragment.show(fragmentTransaction, "dialog")
 

@@ -15,3 +15,4 @@ const val BASE_URL = "https://www.thesportsdb.com/"
 const val API_KEY = "99ac1d44af506e889c0cb61a2ef3fa22"
 const val VOTE_MAX = 10
 const val RATING_MAX = 5
+const val SPLASH_TIME_OUT = 1900
