@@ -19,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar.make
 import kotlinx.android.synthetic.main.activity_main.constraintLayoutMainActivity
 import kotlinx.android.synthetic.main.activity_main.recyclerView
 
-class MainActivity : AppCompatActivity(), MovieReviewEvents {
+class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
 
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var gridLayoutManager: GridLayoutManager

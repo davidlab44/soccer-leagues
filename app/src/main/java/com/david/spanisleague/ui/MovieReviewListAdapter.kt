@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.list_item.view.*
  *
  * @author david.mazo
  */
-class MovieReviewListAdapter(private val movieReviewEvents: MovieReviewEvents) :
+class MovieReviewListAdapter(private val soccerLeagueEvents: SoccerLeagueEvents) :
         RecyclerView.Adapter<MovieReviewListAdapter.ViewHolder>() {
 
     private var listSoccerLeague: List<SoccerLeague> = listOf()
@@ -30,7 +30,7 @@ class MovieReviewListAdapter(private val movieReviewEvents: MovieReviewEvents) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItem(listSoccerLeague[position], movieReviewEvents)
+        holder.bindItem(listSoccerLeague[position], soccerLeagueEvents)
     }
 
     fun addAll(listSoccerLeague: List<SoccerLeague>) {
@@ -39,7 +39,7 @@ class MovieReviewListAdapter(private val movieReviewEvents: MovieReviewEvents) :
     }
 
     class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        fun bindItem(soccerLeague: SoccerLeague, listener: MovieReviewEvents) {
+        fun bindItem(soccerLeague: SoccerLeague, listener: SoccerLeagueEvents) {
             itemView.original_title.text = soccerLeague.strTeam
             //rating_bar.rating = soccerLeague.voteAverage.toFloat() / getFactorMovieReviewRating()
             Glide.with(itemView)
