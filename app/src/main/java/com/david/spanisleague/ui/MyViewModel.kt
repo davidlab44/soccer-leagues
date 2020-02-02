@@ -12,7 +12,7 @@ class MyViewModel : ViewModel() {
         val liveData = MutableLiveData <SoccerLeagueResponse>()
         val myRepository = SoccerLeagueRepository()
 
-        fun callApi() {
-            myRepository.requestMovieReviewList(liveData)
+        fun callApi(league:String) {
+            myRepository.requestMovieReviewList(league,liveData)
         }
     }

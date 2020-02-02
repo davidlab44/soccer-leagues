@@ -26,9 +26,7 @@ import kotlinx.android.synthetic.main.activity_main.recyclerView
 
 class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
 
-    private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var gridLayoutManager: GridLayoutManager
-    private lateinit var staggeredGridLayoutManager: StaggeredGridLayoutManager
     private lateinit var soccerLeagueRepository: SoccerLeagueRepository
     private lateinit var soccerLeagueListAdapter: SoccerLeagueListAdapter
 
@@ -40,25 +38,34 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         launchDialogFragment(R.string.app_name, R.drawable.soccer_leagues)
-        myViewModel.callApi() // You can do it anywhere, on button click etc..
-        observeResponseData() // observe it once in onCreate(), it'll respect your activity lifecycle
+        myViewModel.callApi("Spanish La Liga")
+        observeResponseData()
     }
 
     private fun observeResponseData() {
         myViewModel.liveData.observe(this, Observer { data ->
-            // here will be your response
-            val datos = data
-            Log.e("tag219","mesage"+data)
-            val soccerLeagueDatabase: SoccerLeagueDao = SoccerLeagueDatabase.getSoccerLeague(application.applicationContext).getSoccerLeagueDAO()
-            for (soccerLeague: SoccerLeague in datos.teams) {
-                soccerLeagueDatabase.insertMovieReview(soccerLeague)
+            if (hasConnection()) {
+                SoccerLeagueDatabase.getSoccerLeague(applicationContext).getSoccerLeagueDAO().deleteAllSoccerLeague()
+                val datos = data
+                Log.e("tag219","mesage"+data)
+                val soccerLeagueDatabase: SoccerLeagueDao = SoccerLeagueDatabase.getSoccerLeague(application.applicationContext).getSoccerLeagueDAO()
+                for (soccerLeague: SoccerLeague in datos.teams) {
+                    soccerLeagueDatabase.insertMovieReview(soccerLeague)
+                }
+                soccerLeagueListAdapter = SoccerLeagueListAdapter(this)
+                gridLayoutManager = GridLayoutManager(this, 2)
+                recyclerView.layoutManager = gridLayoutManager
+                recyclerView.adapter = soccerLeagueListAdapter
+                soccerLeagueRepository = SoccerLeagueRepository()
+                soccerLeagueListAdapter.addAll(SoccerLeagueDatabase.getSoccerLeague(application.applicationContext).getSoccerLeagueDAO().getMovieReviewList())
+            }else{
+                soccerLeagueListAdapter = SoccerLeagueListAdapter(this)
+                gridLayoutManager = GridLayoutManager(this, 2)
+                recyclerView.layoutManager = gridLayoutManager
+                recyclerView.adapter = soccerLeagueListAdapter
+                soccerLeagueRepository = SoccerLeagueRepository()
+                soccerLeagueListAdapter.addAll(SoccerLeagueDatabase.getSoccerLeague(application.applicationContext).getSoccerLeagueDAO().getMovieReviewList())
             }
-            soccerLeagueListAdapter = SoccerLeagueListAdapter(this)
-            gridLayoutManager = GridLayoutManager(this, 2)
-            recyclerView.layoutManager = gridLayoutManager
-            recyclerView.adapter = soccerLeagueListAdapter
-            soccerLeagueRepository = SoccerLeagueRepository()
-            soccerLeagueListAdapter.addAll(SoccerLeagueDatabase.getSoccerLeague(application.applicationContext).getSoccerLeagueDAO().getMovieReviewList())
         })
     }
 
@@ -85,15 +92,15 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.spanish_league -> {
-
+                myViewModel.callApi("Spanish La Liga")
                 return true
             }
             R.id.german_bundesliga -> {
-
+                myViewModel.callApi("German Bundesliga")
                 return true
             }
             R.id.portuguese_primeira_liga -> {
-
+                myViewModel.callApi("Portuguese Primeira Liga")
                 return true
             }
             else -> super.onOptionsItemSelected(item)
