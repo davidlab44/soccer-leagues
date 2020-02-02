@@ -8,6 +8,7 @@ import com.david.spanisleague.model.MovieDao
 import com.david.spanisleague.model.MovieResponse
 import com.david.spanisleague.model.MovieReview
 import com.david.spanisleague.model.MovieReviewDatabase
+import com.david.spanisleague.utils.API_KEY
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,11 +27,32 @@ class MovieRepository(private val context: Context) {
     private val apiService = ApiService.instance
     private val movieDatabase: MovieDao get() = MovieReviewDatabase.getMovieDatabase(context).getMovieDAO()
 
-    fun requestMovieReviewList(): List<MovieReview> {
+    /*
+    fun requestMovieReviewList(league:String): List<MovieReview> {
         apiService.getMovieReviewListFromInternet().enqueue(object : Callback<MovieResponse> {
             override fun onResponse(callMovieResponse: Call<MovieResponse>, response: Response<MovieResponse>) {
                 when (response.code()) {
                     200 -> insertMovieReviewListIntoDatabase(response)
+                    else -> Log.e(context.getString(R.string.error_tag), context.getString(R.string.error_response_code_different_to_200))
+                }
+            }
+
+            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+                Log.e(context.getString(R.string.error_tag), t.printStackTrace().toString())
+            }
+        })
+        return getMovieReviewList()
+    }
+    */
+
+    fun requestMovieReviewList(league:String): List<MovieReview> {
+        apiService.getMovieReviewListFromInternet(league).enqueue(object : Callback<MovieResponse> {
+            override fun onResponse(callMovieResponse: Call<MovieResponse>, response: Response<MovieResponse>) {
+                when (response.code()) {
+                    200 -> {
+                        deleteMovieReviewList()
+                        insertMovieReviewListIntoDatabase(response)
+                    }
                     else -> Log.e(context.getString(R.string.error_tag), context.getString(R.string.error_response_code_different_to_200))
                 }
             }
@@ -52,5 +74,10 @@ class MovieRepository(private val context: Context) {
 
     fun getMovieReviewList(): List<MovieReview> {
         return MovieReviewDatabase.getMovieDatabase(context).getMovieDAO().getMovieReviewList()
+    }
+
+
+    fun deleteMovieReviewList() {
+        return MovieReviewDatabase.getMovieDatabase(context).getMovieDAO().deleteAllSoccerLeague()
     }
 }

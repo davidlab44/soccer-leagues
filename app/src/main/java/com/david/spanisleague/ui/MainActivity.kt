@@ -14,7 +14,6 @@ import com.david.spanisleague.R
 import com.david.spanisleague.model.MovieReview
 import com.david.spanisleague.repository.MovieRepository
 import com.david.spanisleague.utils.ID_MOVIE
-import com.david.spanisleague.utils.LINEAR_LAYOUT
 import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar.make
 import kotlinx.android.synthetic.main.activity_main.constraintLayoutMainActivity
@@ -59,7 +58,7 @@ class MainActivity : AppCompatActivity(), MovieReviewEvents {
         recyclerView.adapter = movieReviewListAdapter
         movieRepository = MovieRepository(this)
         if (hasConnection()) {
-            movieReviewListAdapter.addAll(movieRepository.requestMovieReviewList())
+            movieReviewListAdapter.addAll(movieRepository.requestMovieReviewList(league))
             make(constraintLayoutMainActivity, getString(R.string.movie_review_database_updated), LENGTH_LONG).show()
         } else {
             movieReviewListAdapter.addAll(movieRepository.getMovieReviewList())
@@ -74,12 +73,12 @@ class MainActivity : AppCompatActivity(), MovieReviewEvents {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_settings ->{
+            R.id.spanish_league ->{
                 setRecyclerViewSoccerLeagues("Spanish La Liga")
                 return true
             }
             R.id.german_bundesliga ->{
-                setRecyclerViewSoccerLeagues("Spanish La Liga")
+                setRecyclerViewSoccerLeagues("German Bundesliga")
                 return true
             }
             R.id.portuguese_primeira_liga ->{
