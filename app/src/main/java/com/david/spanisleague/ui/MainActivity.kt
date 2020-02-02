@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
     private lateinit var gridLayoutManager: GridLayoutManager
     private lateinit var staggeredGridLayoutManager: StaggeredGridLayoutManager
     private lateinit var soccerLeagueRepository: SoccerLeagueRepository
-    private lateinit var movieReviewListAdapter: MovieReviewListAdapter
+    private lateinit var soccerLeagueListAdapter: SoccerLeagueListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,18 +50,18 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
     }
 
     private fun setRecyclerViewSoccerLeagues(league:String) {
-        movieReviewListAdapter = MovieReviewListAdapter(this)
+        soccerLeagueListAdapter = SoccerLeagueListAdapter(this)
         gridLayoutManager = GridLayoutManager(this, 2)
         linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         staggeredGridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.layoutManager = gridLayoutManager
-        recyclerView.adapter = movieReviewListAdapter
+        recyclerView.adapter = soccerLeagueListAdapter
         soccerLeagueRepository = SoccerLeagueRepository(this)
         if (hasConnection()) {
-            movieReviewListAdapter.addAll(soccerLeagueRepository.requestMovieReviewList(league))
+            soccerLeagueListAdapter.addAll(soccerLeagueRepository.requestMovieReviewList(league))
             make(constraintLayoutMainActivity, getString(R.string.movie_review_database_updated), LENGTH_LONG).show()
         } else {
-            movieReviewListAdapter.addAll(soccerLeagueRepository.getMovieReviewList())
+            soccerLeagueListAdapter.addAll(soccerLeagueRepository.getMovieReviewList())
             make(constraintLayoutMainActivity, getString(R.string.not_network_connection), LENGTH_LONG).show()
         }
     }

@@ -10,11 +10,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 /**
- * Team Events Repository
+ * TeamRepository Repository
  *
- * This Class returns the data to the MainActivity
+ * This Class returns the data to the presentation layout
  * a requestTeamReviewList method is created and asks if there is access to the internet performs a callback.enqueue,
- * through retrofit and populates the bd implemented with room
+ * through retrofit and populates Sqlite Room table and the UI
  *
  * @author david.mazo
  */

@@ -5,7 +5,7 @@ import com.david.spanisleague.model.SoccerLeague
 /**
  * SoccerLeagueEvents
  *
- * This interface is imlemented in the recyclerView items onItemClicked event
+ * This interface is implemented in activities to manage recyclerView items onItemClick event
  *
  * @author david.mazo
  */

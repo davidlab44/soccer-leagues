@@ -8,6 +8,8 @@ import androidx.room.Query
 /**
  * SoccerLeagueDao
  *
+ * This interface provides de DAO for room to Access Database @Entity(tableName = "soccer_league")
+ *
  * @author david.mazo
  */
 @Dao

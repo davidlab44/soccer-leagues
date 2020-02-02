@@ -10,14 +10,14 @@ import com.david.spanisleague.model.SoccerLeague
 import kotlinx.android.synthetic.main.list_item.view.*
 
 /**
- * MovieReviewListAdapter
+ * SoccerLeagueListAdapter
  *
- * Provides access to the data items, makes a View for each item in the data set
+ * Provides access to the SoccerLeague data items, makes a View for each SoccerLeague item
  *
  * @author david.mazo
  */
-class MovieReviewListAdapter(private val soccerLeagueEvents: SoccerLeagueEvents) :
-        RecyclerView.Adapter<MovieReviewListAdapter.ViewHolder>() {
+class SoccerLeagueListAdapter(private val soccerLeagueEvents: SoccerLeagueEvents) :
+        RecyclerView.Adapter<SoccerLeagueListAdapter.ViewHolder>() {
 
     private var listSoccerLeague: List<SoccerLeague> = listOf()
 

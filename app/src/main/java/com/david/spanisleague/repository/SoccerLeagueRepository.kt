@@ -13,11 +13,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 /**
- * Soccer Leagues Repository
+ * SoccerLeagueRepository class
  *
- * This Class returns the data to the MainActivity
- * a requestMovieReviewList method is created and asks if there is access to the internet performs a callback.enqueue,
- * through retrofit and populates the bd implemented with room
+ * This Class returns the data to the presentation layout
+ * a requestSoccerLeagueList method is created and asks if there is access to the internet performs a callback.enqueue,
+ * through retrofit and populates Sqlite Room table and the UI
  *
  * @author david.mazo
  */
@@ -25,24 +25,6 @@ class SoccerLeagueRepository(private val context: Context) {
 
     private val apiService = ApiService.instance
     private val soccerLeagueDatabase: SoccerLeagueDao get() = SoccerLeagueDatabase.getMovieDatabase(context).getMovieDAO()
-
-    /*
-    fun requestMovieReviewList(league:String): List<SoccerLeague> {
-        apiService.getMovieReviewListFromInternet().enqueue(object : Callback<SoccerLeagueResponse> {
-            override fun onResponse(callMovieResponse: Call<SoccerLeagueResponse>, response: Response<SoccerLeagueResponse>) {
-                when (response.code()) {
-                    200 -> insertMovieReviewListIntoDatabase(response)
-                    else -> Log.e(context.getString(R.string.error_tag), context.getString(R.string.error_response_code_different_to_200))
-                }
-            }
-
-            override fun onFailure(call: Call<SoccerLeagueResponse>, t: Throwable) {
-                Log.e(context.getString(R.string.error_tag), t.printStackTrace().toString())
-            }
-        })
-        return getMovieReviewList()
-    }
-    */
 
     fun requestMovieReviewList(league:String): List<SoccerLeague> {
         apiService.getMovieReviewListFromInternet(league).enqueue(object : Callback<SoccerLeagueResponse> {
