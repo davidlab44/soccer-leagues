@@ -11,7 +11,7 @@ import androidx.room.Query
  * @author david.mazo
  */
 @Dao
-interface MovieDao {
+interface SoccerLeagueDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMovieReview(soccerLeague: SoccerLeague)

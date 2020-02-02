@@ -6,7 +6,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 /**
- * MovieDao
+ * SoccerLeagueDao
  *
  * to Access Database @Entity(tableName = "movie_review") data class SoccerLeague
  * facilitates access to stored data with the following methods

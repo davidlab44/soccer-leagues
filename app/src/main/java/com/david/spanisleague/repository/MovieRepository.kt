@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.Log
 import com.david.spanisleague.R
 import com.david.spanisleague.api.ApiService
-import com.david.spanisleague.model.MovieDao
-import com.david.spanisleague.model.MovieResponse
+import com.david.spanisleague.model.SoccerLeagueDao
+import com.david.spanisleague.model.SoccerLeagueResponse
 import com.david.spanisleague.model.SoccerLeague
 import com.david.spanisleague.model.SoccerLeagueDatabase
 import retrofit2.Call
@@ -24,19 +24,19 @@ import retrofit2.Response
 class MovieRepository(private val context: Context) {
 
     private val apiService = ApiService.instance
-    private val movieDatabase: MovieDao get() = SoccerLeagueDatabase.getMovieDatabase(context).getMovieDAO()
+    private val soccerLeagueDatabase: SoccerLeagueDao get() = SoccerLeagueDatabase.getMovieDatabase(context).getMovieDAO()
 
     /*
     fun requestMovieReviewList(league:String): List<SoccerLeague> {
-        apiService.getMovieReviewListFromInternet().enqueue(object : Callback<MovieResponse> {
-            override fun onResponse(callMovieResponse: Call<MovieResponse>, response: Response<MovieResponse>) {
+        apiService.getMovieReviewListFromInternet().enqueue(object : Callback<SoccerLeagueResponse> {
+            override fun onResponse(callMovieResponse: Call<SoccerLeagueResponse>, response: Response<SoccerLeagueResponse>) {
                 when (response.code()) {
                     200 -> insertMovieReviewListIntoDatabase(response)
                     else -> Log.e(context.getString(R.string.error_tag), context.getString(R.string.error_response_code_different_to_200))
                 }
             }
 
-            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+            override fun onFailure(call: Call<SoccerLeagueResponse>, t: Throwable) {
                 Log.e(context.getString(R.string.error_tag), t.printStackTrace().toString())
             }
         })
@@ -45,8 +45,8 @@ class MovieRepository(private val context: Context) {
     */
 
     fun requestMovieReviewList(league:String): List<SoccerLeague> {
-        apiService.getMovieReviewListFromInternet(league).enqueue(object : Callback<MovieResponse> {
-            override fun onResponse(callMovieResponse: Call<MovieResponse>, response: Response<MovieResponse>) {
+        apiService.getMovieReviewListFromInternet(league).enqueue(object : Callback<SoccerLeagueResponse> {
+            override fun onResponse(callSoccerLeagueResponse: Call<SoccerLeagueResponse>, response: Response<SoccerLeagueResponse>) {
                 when (response.code()) {
                     200 -> {
                         deleteMovieReviewList()
@@ -56,17 +56,17 @@ class MovieRepository(private val context: Context) {
                 }
             }
 
-            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+            override fun onFailure(call: Call<SoccerLeagueResponse>, t: Throwable) {
                 Log.e(context.getString(R.string.error_tag), t.printStackTrace().toString())
             }
         })
         return getMovieReviewList()
     }
 
-    private fun insertMovieReviewListIntoDatabase(response: Response<MovieResponse>) {
+    private fun insertMovieReviewListIntoDatabase(response: Response<SoccerLeagueResponse>) {
         if (response.body() != null) {
             for (soccerLeague: SoccerLeague in response.body()!!.teams) {
-                movieDatabase.insertMovieReview(soccerLeague)
+                soccerLeagueDatabase.insertMovieReview(soccerLeague)
             }
         }
     }
