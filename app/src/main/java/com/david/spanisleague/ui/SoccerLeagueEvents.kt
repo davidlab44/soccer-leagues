@@ -5,9 +5,9 @@ import com.david.spanisleague.model.SoccerLeague
 /**
  * SoccerLeagueEvents
  *
- * The onItemClicked method is created to be implemented in the classes that use the interface
+ * This interface is imlemented in the recyclerView items onItemClicked event
  *
- * @author juan.rendon
+ * @author david.mazo
  */
 interface SoccerLeagueEvents {
     fun onItemClicked(soccerLeague: SoccerLeague)

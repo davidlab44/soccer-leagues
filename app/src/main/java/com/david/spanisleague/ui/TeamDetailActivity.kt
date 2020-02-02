@@ -18,9 +18,9 @@ import kotlinx.android.synthetic.main.detail_item.*
 /**
  * TeamDetailActivity
  *
- * Show the detail of a selected movie in the recyclerView of the MainActivity
+ * Show the detail in the UI about a selected soccer team
  *
- * @author juan.rendon
+ * @author david.mazo
  */
 class TeamDetailActivity : AppCompatActivity() {
 

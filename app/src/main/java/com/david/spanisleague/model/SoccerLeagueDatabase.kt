@@ -14,7 +14,7 @@ import androidx.room.RoomDatabase
  * @author david.mazo
  */
 
-@Database(entities = [SoccerLeague::class, TeamReview::class], version = 12, exportSchema = false)
+@Database(entities = [SoccerLeague::class, TeamReview::class], version = 13, exportSchema = false)
 abstract class SoccerLeagueDatabase : RoomDatabase() {
 
     abstract fun getMovieDAO(): SoccerLeagueDao

@@ -14,7 +14,15 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class RoadReferencesDialogFragment(private val application: Application) : DialogFragment() {
+/**
+ * SplashViewDialogFragment
+ *
+ * Just a splash view that presents the app,
+ * it delay less than 2 seconds, an then desappear
+ *
+ * @author david.mazo
+ */
+class SplashViewDialogFragment(private val application: Application) : DialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.road_references_dialog, container, false)

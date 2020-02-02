@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
             fragmentTransaction.remove(prev)
         }
         fragmentTransaction.addToBackStack(null)
-        val dialogFragment = RoadReferencesDialogFragment(application)
+        val dialogFragment = SplashViewDialogFragment(application)
         val dialogFragmentBundle = Bundle()
         dialogFragmentBundle.putInt("trigger", trigger)
         dialogFragmentBundle.putInt("image", image)
