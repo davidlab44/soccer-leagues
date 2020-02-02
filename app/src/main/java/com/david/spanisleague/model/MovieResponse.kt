@@ -9,5 +9,5 @@ package com.david.spanisleague.model
  * @author juan.rendon
  */
 class MovieResponse {
-    var results: List<MovieReview> = listOf()
+    var countrys: List<MovieReview> = listOf()
 }

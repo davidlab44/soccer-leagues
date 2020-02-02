@@ -8,15 +8,21 @@ import com.google.gson.annotations.SerializedName
 /**
  * MovieReview
  *
- * data class for the json that we get from themoviedb API in the field results
+ * data class for the json that we get from themoviedb API in the field countrys
  *
  * @author juan.rendon
  */
 @Entity(tableName = "movie_review")
 data class MovieReview(
+
+
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "id")
         var id: Int,
+        @SerializedName("strLeague")
+        var strLeague: String?
+
+        /*
         var video: String?,
         var adult: String?,
         var title: String?,
@@ -36,4 +42,8 @@ data class MovieReview(
         @SerializedName("original_title")
         var originalTitle: String?,
         @SerializedName("original_language")
-        var originalLanguage: String?)
+        var originalLanguage: String?
+
+         */
+
+)

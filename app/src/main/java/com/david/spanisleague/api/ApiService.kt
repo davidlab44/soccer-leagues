@@ -23,8 +23,8 @@ interface ApiService {
      * getMovieReviewListFromInternet
      * In this interface the token or api_key of themoviedb.com URL is passed as a parameter and returns a call of type MovieResponse
      */
-    @GET("movie/popular?")
-    fun getMovieReviewListFromInternet(@Query("api_key") app_id: String): Call<MovieResponse>
+    @GET("/api/v1/json/1/search_all_leagues.php?c=Spain&s=Soccer")
+    fun getMovieReviewListFromInternet(): Call<MovieResponse>
 
     companion object {
         val instance: ApiService = Retrofit.Builder()

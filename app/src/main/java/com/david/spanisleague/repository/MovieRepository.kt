@@ -8,7 +8,6 @@ import com.david.spanisleague.model.MovieDao
 import com.david.spanisleague.model.MovieResponse
 import com.david.spanisleague.model.MovieReview
 import com.david.spanisleague.model.MovieReviewDatabase
-import com.david.spanisleague.utils.API_KEY
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,7 +27,7 @@ class MovieRepository(private val context: Context) {
     private val movieDatabase: MovieDao get() = MovieReviewDatabase.getMovieDatabase(context).getMovieDAO()
 
     fun requestMovieReviewList(): List<MovieReview> {
-        apiService.getMovieReviewListFromInternet(API_KEY).enqueue(object : Callback<MovieResponse> {
+        apiService.getMovieReviewListFromInternet().enqueue(object : Callback<MovieResponse> {
             override fun onResponse(callMovieResponse: Call<MovieResponse>, response: Response<MovieResponse>) {
                 when (response.code()) {
                     200 -> insertMovieReviewListIntoDatabase(response)
@@ -45,7 +44,7 @@ class MovieRepository(private val context: Context) {
 
     private fun insertMovieReviewListIntoDatabase(response: Response<MovieResponse>) {
         if (response.body() != null) {
-            for (movieReview: MovieReview in response.body()!!.results) {
+            for (movieReview: MovieReview in response.body()!!.countrys) {
                 movieDatabase.insertMovieReview(movieReview)
             }
         }
