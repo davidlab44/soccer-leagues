@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName
  *
  * @author david.mazo
  */
-@Entity(tableName = "movie_review")
+@Entity(tableName = "soccer_league")
 data class SoccerLeague(
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "id")

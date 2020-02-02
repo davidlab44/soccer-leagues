@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.david.spanisleague.R
 import com.david.spanisleague.model.SoccerLeague
-import com.david.spanisleague.repository.MovieRepository
+import com.david.spanisleague.repository.SoccerLeagueRepository
 import com.david.spanisleague.utils.ID_MOVIE
 import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar.make
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), MovieReviewEvents {
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var gridLayoutManager: GridLayoutManager
     private lateinit var staggeredGridLayoutManager: StaggeredGridLayoutManager
-    private lateinit var movieRepository: MovieRepository
+    private lateinit var soccerLeagueRepository: SoccerLeagueRepository
     private lateinit var movieReviewListAdapter: MovieReviewListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,12 +56,12 @@ class MainActivity : AppCompatActivity(), MovieReviewEvents {
         staggeredGridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recyclerView.layoutManager = gridLayoutManager
         recyclerView.adapter = movieReviewListAdapter
-        movieRepository = MovieRepository(this)
+        soccerLeagueRepository = SoccerLeagueRepository(this)
         if (hasConnection()) {
-            movieReviewListAdapter.addAll(movieRepository.requestMovieReviewList(league))
+            movieReviewListAdapter.addAll(soccerLeagueRepository.requestMovieReviewList(league))
             make(constraintLayoutMainActivity, getString(R.string.movie_review_database_updated), LENGTH_LONG).show()
         } else {
-            movieReviewListAdapter.addAll(movieRepository.getMovieReviewList())
+            movieReviewListAdapter.addAll(soccerLeagueRepository.getMovieReviewList())
             make(constraintLayoutMainActivity, getString(R.string.not_network_connection), LENGTH_LONG).show()
         }
     }

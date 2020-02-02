@@ -8,13 +8,13 @@ import androidx.room.RoomDatabase
 /**
  * SoccerLeagueDatabase
  *
- * We can use it to create other classes
- * It is abstract because it is implemented by Room
+ * We will use this class to create other classes
+ * This class is abstract because is implemented by Room
  *
  * @author david.mazo
  */
 
-@Database(entities = [SoccerLeague::class, TeamReview::class], version = 11, exportSchema = false)
+@Database(entities = [SoccerLeague::class, TeamReview::class], version = 12, exportSchema = false)
 abstract class SoccerLeagueDatabase : RoomDatabase() {
 
     abstract fun getMovieDAO(): SoccerLeagueDao

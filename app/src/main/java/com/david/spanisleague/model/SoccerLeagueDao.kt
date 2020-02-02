@@ -16,12 +16,12 @@ interface SoccerLeagueDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMovieReview(soccerLeague: SoccerLeague)
 
-    @Query("SELECT * FROM movie_review")
+    @Query("SELECT * FROM soccer_league")
     fun getMovieReviewList(): List<SoccerLeague>
 
-    @Query("SELECT * FROM movie_review WHERE movie_review.id=:id")
+    @Query("SELECT * FROM soccer_league WHERE soccer_league.id=:id")
     fun getMovieReviewDetail(id: Int): SoccerLeague
 
-    @Query("DELETE FROM movie_review")
+    @Query("DELETE FROM soccer_league")
     fun deleteAllSoccerLeague()
 }

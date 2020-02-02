@@ -21,7 +21,7 @@ import retrofit2.Response
  *
  * @author david.mazo
  */
-class MovieRepository(private val context: Context) {
+class SoccerLeagueRepository(private val context: Context) {
 
     private val apiService = ApiService.instance
     private val soccerLeagueDatabase: SoccerLeagueDao get() = SoccerLeagueDatabase.getMovieDatabase(context).getMovieDAO()
