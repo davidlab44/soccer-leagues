@@ -7,37 +7,31 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.david.spanisleague.R
 import com.david.spanisleague.model.MovieReview
 import com.david.spanisleague.repository.MovieRepository
-import com.david.spanisleague.utils.GRILL_LAYOUT
 import com.david.spanisleague.utils.ID_MOVIE
 import com.david.spanisleague.utils.LINEAR_LAYOUT
-import com.david.spanisleague.utils.STAGGERED_LAYOUT
 import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar.make
 import kotlinx.android.synthetic.main.activity_main.constraintLayoutMainActivity
 import kotlinx.android.synthetic.main.activity_main.recyclerView
-import kotlinx.android.synthetic.main.road_references_dialog.*
 
 class MainActivity : AppCompatActivity(), MovieReviewEvents {
-
 
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var gridLayoutManager: GridLayoutManager
     private lateinit var staggeredGridLayoutManager: StaggeredGridLayoutManager
     private lateinit var movieRepository: MovieRepository
     private lateinit var movieReviewListAdapter: MovieReviewListAdapter
-    private var layoutState: Int = LINEAR_LAYOUT
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initComponents()
+        setRecyclerViewSoccerLeagues("Spanish La Liga")
         launchDialogFragment(R.string.app_name,R.drawable.soccer_leagues)
     }
 
@@ -54,10 +48,9 @@ class MainActivity : AppCompatActivity(), MovieReviewEvents {
         dialogFragmentBundle.putInt("image", image)
         dialogFragment.arguments = dialogFragmentBundle
         dialogFragment.show(fragmentTransaction, "dialog")
-
     }
 
-    private fun initComponents() {
+    private fun setRecyclerViewSoccerLeagues(league:String) {
         movieReviewListAdapter = MovieReviewListAdapter(this)
         gridLayoutManager = GridLayoutManager(this, 2)
         linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -75,31 +68,27 @@ class MainActivity : AppCompatActivity(), MovieReviewEvents {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_dynamic, menu)
+        menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
-    override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
-        when (layoutState) {
-            LINEAR_LAYOUT -> {
-                recyclerView.layoutManager = gridLayoutManager
-                layoutState = GRILL_LAYOUT
-                menuItem.icon = ContextCompat.getDrawable(this, R.drawable.icon_grilled)
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_settings ->{
+                setRecyclerViewSoccerLeagues("Spanish La Liga")
+                return true
             }
-            GRILL_LAYOUT -> {
-                recyclerView.layoutManager = staggeredGridLayoutManager
-                layoutState = STAGGERED_LAYOUT
-                menuItem.icon = ContextCompat.getDrawable(this, R.drawable.icon_staggered)
+            R.id.german_bundesliga ->{
+                setRecyclerViewSoccerLeagues("Spanish La Liga")
+                return true
             }
-            STAGGERED_LAYOUT -> {
-                recyclerView.layoutManager = linearLayoutManager
-                layoutState = LINEAR_LAYOUT
-                menuItem.icon = ContextCompat.getDrawable(this, R.drawable.icon_linear)
+            R.id.portuguese_primeira_liga ->{
+                setRecyclerViewSoccerLeagues("Portuguese Primeira Liga")
+                return true
             }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(menuItem)
     }
-
 
     override fun onItemClicked(movieReview: MovieReview) {
         val intent: Intent = TeamDetail.createIntent(this@MainActivity)

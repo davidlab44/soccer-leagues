@@ -4,6 +4,7 @@
     <string name="social_networks_title">Social network</string>
     <string name="description_title">Team description</string>
     <string name="next_events_title">Next 5 events</string>
+    <string name="action_settings">Settings</string>
     <string name="imageItem">Thumbnail image of the movie is shown here</string>
     <string name="originalTitle">Original Title</string>
     <string name="average">Average</string>

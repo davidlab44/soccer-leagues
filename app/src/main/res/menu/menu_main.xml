@@ -1,24 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    tools:context="com.david.spanisleague.ui.MainActivity">
 
     <item
-        android:id="@+id/linearLayoutManager"
-        android:icon="@drawable/icon_grilled"
-        app:showAsAction="never"
-        tools:ignore="MenuTitle" />
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
 
     <item
-        android:id="@+id/gridLayoutManager"
-        android:icon="@drawable/icon_grilled"
-        app:showAsAction="never"
-        tools:ignore="MenuTitle" />
+        android:id="@+id/german_bundesliga"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
 
     <item
-        android:id="@+id/staggeredGridLayoutManager"
-        android:icon="@drawable/icon_grilled"
-        app:showAsAction="never"
-        tools:ignore="MenuTitle" />
-
+        android:id="@+id/portuguese_primeira_liga"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
 </menu>
