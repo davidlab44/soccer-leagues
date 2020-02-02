@@ -14,13 +14,13 @@ import androidx.room.Query
 interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMovieReview(movieReview: MovieReview)
+    fun insertMovieReview(soccerLeague: SoccerLeague)
 
     @Query("SELECT * FROM movie_review")
-    fun getMovieReviewList(): List<MovieReview>
+    fun getMovieReviewList(): List<SoccerLeague>
 
     @Query("SELECT * FROM movie_review WHERE movie_review.id=:id")
-    fun getMovieReviewDetail(id: Int): MovieReview
+    fun getMovieReviewDetail(id: Int): SoccerLeague
 
     @Query("DELETE FROM movie_review")
     fun deleteAllSoccerLeague()

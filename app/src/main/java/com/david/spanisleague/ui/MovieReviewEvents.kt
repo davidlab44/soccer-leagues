@@ -1,6 +1,6 @@
 package com.david.spanisleague.ui
 
-import com.david.spanisleague.model.MovieReview
+import com.david.spanisleague.model.SoccerLeague
 
 /**
  * MovieReviewEvents
@@ -10,5 +10,5 @@ import com.david.spanisleague.model.MovieReview
  * @author juan.rendon
  */
 interface MovieReviewEvents {
-    fun onItemClicked(movieReview: MovieReview)
+    fun onItemClicked(soccerLeague: SoccerLeague)
 }

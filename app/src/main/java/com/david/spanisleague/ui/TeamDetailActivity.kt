@@ -8,7 +8,7 @@ import android.view.MenuItem
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.david.spanisleague.model.MovieReview
+import com.david.spanisleague.model.SoccerLeague
 import com.david.spanisleague.model.SoccerLeagueDatabase.Companion.getMovieDatabase
 import com.david.spanisleague.model.TeamReview
 import com.david.spanisleague.repository.TeamRepository
@@ -47,22 +47,22 @@ class TeamDetailActivity : AppCompatActivity() {
         roadReferenceListView.adapter = adapter
     }
 
-    private fun bindMovieReview(movieReview: MovieReview) {
-        textViewStrTeam.text = movieReview.strTeam
-        textViewStrDescriptionEN.text = movieReview.strDescriptionEN
-        textViewIntFormedYear.text = "Foundated in ${movieReview.intFormedYear}"
-        textViewWebsite.text = movieReview.strWebsite
-        textViewFacebook.text = movieReview.strFacebook
-        textViewTwitter.text = movieReview.strTwitter
-        textViewInstagram.text = movieReview.strInstagram
+    private fun bindMovieReview(soccerLeague: SoccerLeague) {
+        textViewStrTeam.text = soccerLeague.strTeam
+        textViewStrDescriptionEN.text = soccerLeague.strDescriptionEN
+        textViewIntFormedYear.text = "Foundated in ${soccerLeague.intFormedYear}"
+        textViewWebsite.text = soccerLeague.strWebsite
+        textViewFacebook.text = soccerLeague.strFacebook
+        textViewTwitter.text = soccerLeague.strTwitter
+        textViewInstagram.text = soccerLeague.strInstagram
         Glide.with(imageViewStrTeamBadge)
-                .load(movieReview.strTeamBadge)
+                .load(soccerLeague.strTeamBadge)
                 .centerCrop()
                 .fitCenter()
                 .override(400, 400)
                 .into(imageViewStrTeamBadge)
         Glide.with(imageViewStrTeamJersey)
-                .load(movieReview.strTeamJersey)
+                .load(soccerLeague.strTeamJersey)
                 .centerCrop()
                 .fitCenter()
                 .override(400, 400)

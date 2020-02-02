@@ -6,14 +6,14 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 /**
- * MovieReview
+ * SoccerLeague
  *
  * data class for thesportsdb API, it gets all teams in a league
  *
  * @author david.mazo
  */
 @Entity(tableName = "movie_review")
-data class MovieReview(
+data class SoccerLeague(
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "id")
         var id: Int,

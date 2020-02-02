@@ -6,7 +6,7 @@ import com.david.spanisleague.R
 import com.david.spanisleague.api.ApiService
 import com.david.spanisleague.model.MovieDao
 import com.david.spanisleague.model.MovieResponse
-import com.david.spanisleague.model.MovieReview
+import com.david.spanisleague.model.SoccerLeague
 import com.david.spanisleague.model.SoccerLeagueDatabase
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,7 +27,7 @@ class MovieRepository(private val context: Context) {
     private val movieDatabase: MovieDao get() = SoccerLeagueDatabase.getMovieDatabase(context).getMovieDAO()
 
     /*
-    fun requestMovieReviewList(league:String): List<MovieReview> {
+    fun requestMovieReviewList(league:String): List<SoccerLeague> {
         apiService.getMovieReviewListFromInternet().enqueue(object : Callback<MovieResponse> {
             override fun onResponse(callMovieResponse: Call<MovieResponse>, response: Response<MovieResponse>) {
                 when (response.code()) {
@@ -44,7 +44,7 @@ class MovieRepository(private val context: Context) {
     }
     */
 
-    fun requestMovieReviewList(league:String): List<MovieReview> {
+    fun requestMovieReviewList(league:String): List<SoccerLeague> {
         apiService.getMovieReviewListFromInternet(league).enqueue(object : Callback<MovieResponse> {
             override fun onResponse(callMovieResponse: Call<MovieResponse>, response: Response<MovieResponse>) {
                 when (response.code()) {
@@ -65,13 +65,13 @@ class MovieRepository(private val context: Context) {
 
     private fun insertMovieReviewListIntoDatabase(response: Response<MovieResponse>) {
         if (response.body() != null) {
-            for (movieReview: MovieReview in response.body()!!.teams) {
-                movieDatabase.insertMovieReview(movieReview)
+            for (soccerLeague: SoccerLeague in response.body()!!.teams) {
+                movieDatabase.insertMovieReview(soccerLeague)
             }
         }
     }
 
-    fun getMovieReviewList(): List<MovieReview> {
+    fun getMovieReviewList(): List<SoccerLeague> {
         return SoccerLeagueDatabase.getMovieDatabase(context).getMovieDAO().getMovieReviewList()
     }
 

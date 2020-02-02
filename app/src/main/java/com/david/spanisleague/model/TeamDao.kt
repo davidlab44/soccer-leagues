@@ -8,7 +8,7 @@ import androidx.room.Query
 /**
  * MovieDao
  *
- * to Access Database @Entity(tableName = "movie_review") data class MovieReview
+ * to Access Database @Entity(tableName = "movie_review") data class SoccerLeague
  * facilitates access to stored data with the following methods
  *
  * @author david.mazo

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.david.spanisleague.R
-import com.david.spanisleague.model.MovieReview
+import com.david.spanisleague.model.SoccerLeague
 import com.david.spanisleague.repository.MovieRepository
 import com.david.spanisleague.utils.ID_MOVIE
 import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
@@ -89,9 +89,9 @@ class MainActivity : AppCompatActivity(), MovieReviewEvents {
         }
     }
 
-    override fun onItemClicked(movieReview: MovieReview) {
+    override fun onItemClicked(soccerLeague: SoccerLeague) {
         val intent: Intent = TeamDetailActivity.createIntent(this@MainActivity)
-        intent.putExtra(ID_MOVIE, movieReview.id)
+        intent.putExtra(ID_MOVIE, soccerLeague.id)
         startActivity(intent)
     }
 
