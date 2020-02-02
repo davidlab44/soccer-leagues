@@ -1,6 +1,7 @@
 package com.david.spanisleague.api
 
 import com.david.spanisleague.model.MovieResponse
+import com.david.spanisleague.model.TeamResponse
 import com.david.spanisleague.utils.BASE_URL
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -25,6 +26,9 @@ interface ApiService {
      */
     @GET("/api/v1/json/1/search_all_teams.php?l=English%20Premier%20League")
     fun getMovieReviewListFromInternet(): Call<MovieResponse>
+
+    @GET("/api/v1/json/1/eventsnext.php?id=134301")
+    fun getTeamListFromInternet(): Call<TeamResponse>
 
     companion object {
         val instance: ApiService = Retrofit.Builder()
