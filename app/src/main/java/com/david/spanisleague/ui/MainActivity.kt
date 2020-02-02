@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
         launchDialogFragment(R.string.app_name,R.drawable.soccer_leagues)
     }
 
-    private fun launchDialogFragment(trigger: Int,image:Int) {
+    private fun launchDialogFragment(name: Int,image:Int) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val prev = supportFragmentManager.findFragmentByTag("dialog")
         if (prev != null) {
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
         fragmentTransaction.addToBackStack(null)
         val dialogFragment = SplashViewDialogFragment(application)
         val dialogFragmentBundle = Bundle()
-        dialogFragmentBundle.putInt("trigger", trigger)
+        dialogFragmentBundle.putInt("name", name)
         dialogFragmentBundle.putInt("image", image)
         dialogFragment.arguments = dialogFragmentBundle
         dialogFragment.show(fragmentTransaction, "dialog")

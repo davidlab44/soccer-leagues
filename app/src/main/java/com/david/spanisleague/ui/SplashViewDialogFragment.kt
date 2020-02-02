@@ -30,7 +30,7 @@ class SplashViewDialogFragment(private val application: Application) : DialogFra
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val dialogFragmentTrigger = arguments?.getInt("trigger", 0)!!
+        val dialogFragmentTrigger = arguments?.getInt("name", 0)!!
         textViewAppName.text = application.getString(dialogFragmentTrigger).toUpperCase()
         val soccerLeagueDrawableResource = arguments?.getInt("image", 0)!!
         imageViewSoccerLeague.setImageDrawable(application.getDrawable(soccerLeagueDrawableResource))

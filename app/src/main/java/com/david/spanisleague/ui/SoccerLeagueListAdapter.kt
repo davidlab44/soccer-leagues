@@ -40,14 +40,14 @@ class SoccerLeagueListAdapter(private val soccerLeagueEvents: SoccerLeagueEvents
 
     class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         fun bindItem(soccerLeague: SoccerLeague, listener: SoccerLeagueEvents) {
-            itemView.original_title.text = soccerLeague.strTeam
-            //rating_bar.rating = soccerLeague.voteAverage.toFloat() / getFactorMovieReviewRating()
+            itemView.textViewName.text = soccerLeague.strTeam
+            itemView.textViewStadium.text = "Stadium: ${soccerLeague.strStadium}"
             Glide.with(itemView)
                     .load(soccerLeague.strTeamBadge)
                     .centerCrop()
                     .fitCenter()
                     .override(1000, 1000)
-                    .into(itemView.movie_image)
+                    .into(itemView.imageViewTeamBadge)
             view.setOnClickListener { listener.onItemClicked(soccerLeague) }
         }
     }
