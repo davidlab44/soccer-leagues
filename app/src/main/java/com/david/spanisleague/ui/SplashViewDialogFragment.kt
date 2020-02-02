@@ -18,7 +18,8 @@ import kotlinx.coroutines.launch
  * SplashViewDialogFragment
  *
  * Just a splash view that presents the app,
- * it delay less than 2 seconds, an then desappear
+ * it delay less than 2 seconds,
+ * Then usin KOTLIN CORROUTINES make it desappear
  *
  * @author david.mazo
  */

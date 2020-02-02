@@ -4,9 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -27,11 +30,25 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
     private lateinit var soccerLeagueRepository: SoccerLeagueRepository
     private lateinit var soccerLeagueListAdapter: SoccerLeagueListAdapter
 
+    private val myViewModel by lazy {
+        return@lazy ViewModelProviders.of(this).get(MyViewModel::class.java)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setRecyclerViewSoccerLeagues("Spanish La Liga")
+
         launchDialogFragment(R.string.app_name, R.drawable.soccer_leagues)
+        myViewModel.callApi() // You can do it anywhere, on button click etc..
+        observeResponseData() // observe it once in onCreate(), it'll respect your activity lifecycle
+    }
+
+    private fun observeResponseData() {
+        myViewModel.liveData.observe(this, Observer { data ->
+            // here will be your response
+            val datos = data
+            Log.e("tag219","mesage"+data)
+        })
     }
 
     private fun launchDialogFragment(name: Int, image: Int) {
@@ -49,23 +66,6 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
         dialogFragment.show(fragmentTransaction, "dialog")
     }
 
-    private fun setRecyclerViewSoccerLeagues(league: String) {
-        soccerLeagueListAdapter = SoccerLeagueListAdapter(this)
-        gridLayoutManager = GridLayoutManager(this, 2)
-        linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        staggeredGridLayoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        recyclerView.layoutManager = gridLayoutManager
-        recyclerView.adapter = soccerLeagueListAdapter
-        soccerLeagueRepository = SoccerLeagueRepository(this)
-        if (hasConnection()) {
-            soccerLeagueListAdapter.addAll(soccerLeagueRepository.requestMovieReviewList(league))
-            make(constraintLayoutMainActivity, getString(R.string.movie_review_database_updated), LENGTH_LONG).show()
-        } else {
-            soccerLeagueListAdapter.addAll(soccerLeagueRepository.getMovieReviewList())
-            make(constraintLayoutMainActivity, getString(R.string.not_network_connection), LENGTH_LONG).show()
-        }
-    }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
@@ -74,15 +74,15 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.spanish_league -> {
-                setRecyclerViewSoccerLeagues("Spanish La Liga")
+
                 return true
             }
             R.id.german_bundesliga -> {
-                setRecyclerViewSoccerLeagues("German Bundesliga")
+
                 return true
             }
             R.id.portuguese_primeira_liga -> {
-                setRecyclerViewSoccerLeagues("Portuguese Primeira Liga")
+
                 return true
             }
             else -> super.onOptionsItemSelected(item)
