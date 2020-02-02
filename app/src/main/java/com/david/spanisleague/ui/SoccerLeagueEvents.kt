@@ -1,6 +1,6 @@
 package com.david.spanisleague.ui
 
-import com.david.spanisleague.model.SoccerLeague
+import com.david.spanisleague.data.local.SoccerLeague
 
 /**
  * SoccerLeagueEvents

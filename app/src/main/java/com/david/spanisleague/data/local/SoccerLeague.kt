@@ -1,4 +1,4 @@
-package com.david.spanisleague.model
+package com.david.spanisleague.data.local
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -8,9 +8,9 @@ import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.david.spanisleague.model.SoccerLeague
-import com.david.spanisleague.model.SoccerLeagueDatabase.Companion.getSoccerLeague
-import com.david.spanisleague.model.TeamReview
+import com.david.spanisleague.data.local.SoccerLeague
+import com.david.spanisleague.data.local.SoccerLeagueDatabase.Companion.getSoccerLeague
+import com.david.spanisleague.data.local.TeamEvent
 import com.david.spanisleague.repository.TeamRepository
 import com.david.spanisleague.utils.ID_SOCCER_LEAGUE
 import kotlinx.android.synthetic.main.team_detail_activity.*
@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.team_detail_activity.*
 class TeamDetailActivity : AppCompatActivity() {
 
     private lateinit var teamRepository: TeamRepository
-    private lateinit var adapter: ArrayAdapter<TeamReview>
+    private lateinit var adapter: ArrayAdapter<TeamEvent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,7 +1,7 @@
-package com.david.spanisleague.api
+package com.david.spanisleague.data.remote
 
-import com.david.spanisleague.model.SoccerLeagueResponse
-import com.david.spanisleague.model.TeamResponse
+import com.david.spanisleague.data.local.SoccerLeagueResponse
+import com.david.spanisleague.data.local.TeamResponse
 import com.david.spanisleague.utils.BASE_URL
 import retrofit2.Call
 import retrofit2.Retrofit

@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.david.spanisleague.R
-import com.david.spanisleague.model.SoccerLeague
-import com.david.spanisleague.model.SoccerLeagueDatabase
+import com.david.spanisleague.data.local.SoccerLeague
 import com.david.spanisleague.repository.SoccerLeagueRepository
 import com.david.spanisleague.utils.ID_SOCCER_LEAGUE
 import com.google.android.material.snackbar.Snackbar.LENGTH_LONG

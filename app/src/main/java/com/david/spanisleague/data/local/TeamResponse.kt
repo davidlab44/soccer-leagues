@@ -1,4 +1,4 @@
-package com.david.spanisleague.model
+package com.david.spanisleague.data.local
 
 /**
  * TeamResponse
@@ -8,5 +8,5 @@ package com.david.spanisleague.model
  * @author david.mazo
  */
 class TeamResponse {
-    var events: List<TeamReview> = listOf()
+    var events: List<TeamEvent> = listOf()
 }

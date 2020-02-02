@@ -1,4 +1,4 @@
-package com.david.spanisleague.model
+package com.david.spanisleague.data.local
 
 import android.content.Context
 import androidx.room.Database
@@ -14,7 +14,7 @@ import androidx.room.RoomDatabase
  * @author david.mazo
  */
 
-@Database(entities = [SoccerLeague::class, TeamReview::class], version = 14, exportSchema = false)
+@Database(entities = [SoccerLeague::class, TeamEvent::class], version = 14, exportSchema = false)
 abstract class SoccerLeagueDatabase : RoomDatabase() {
 
     abstract fun getSoccerLeagueDAO(): SoccerLeagueDao

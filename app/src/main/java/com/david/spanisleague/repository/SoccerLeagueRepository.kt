@@ -3,11 +3,11 @@ package com.david.spanisleague.repository
 import android.content.Context
 import android.util.Log
 import com.david.spanisleague.R
-import com.david.spanisleague.api.ApiRequest
-import com.david.spanisleague.model.SoccerLeagueDao
-import com.david.spanisleague.model.SoccerLeagueResponse
-import com.david.spanisleague.model.SoccerLeague
-import com.david.spanisleague.model.SoccerLeagueDatabase
+import com.david.spanisleague.data.remote.ApiRequest
+import com.david.spanisleague.data.local.SoccerLeagueDao
+import com.david.spanisleague.data.local.SoccerLeagueResponse
+import com.david.spanisleague.data.local.SoccerLeague
+import com.david.spanisleague.data.local.SoccerLeagueDatabase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

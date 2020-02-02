@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.david.spanisleague.R
-import com.david.spanisleague.model.SoccerLeague
+import com.david.spanisleague.data.local.SoccerLeague
 import kotlinx.android.synthetic.main.list_item.view.*
 
 /**

@@ -3,8 +3,11 @@ package com.david.spanisleague.repository
 import android.content.Context
 import android.util.Log
 import com.david.spanisleague.R
-import com.david.spanisleague.api.ApiRequest
-import com.david.spanisleague.model.*
+import com.david.spanisleague.data.remote.ApiRequest
+import com.david.spanisleague.data.local.SoccerLeagueDatabase
+import com.david.spanisleague.data.local.TeamDao
+import com.david.spanisleague.data.local.TeamResponse
+import com.david.spanisleague.data.local.TeamEvent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,7 +26,7 @@ class TeamRepository(private val context: Context) {
     private val apiService = ApiRequest.instance
     private val movieDatabase: TeamDao get() = SoccerLeagueDatabase.getSoccerLeague(context).getTeamEventDAO()
 
-    fun requestTeamReviewList(idTeam: String?): List<TeamReview> {
+    fun requestTeamReviewList(idTeam: String?): List<TeamEvent> {
         apiService.getTeamListFromInternet(idTeam).enqueue(object : Callback<TeamResponse> {
             override fun onResponse(callTeamResponse: Call<TeamResponse>, response: Response<TeamResponse>) {
                 when (response.code()) {
@@ -44,13 +47,13 @@ class TeamRepository(private val context: Context) {
 
     private fun insertTeamReviewListIntoDatabase(response: Response<TeamResponse>) {
         if (response.body() != null) {
-            for (teamReview: TeamReview in response.body()!!.events) {
+            for (teamReview: TeamEvent in response.body()!!.events) {
                 movieDatabase.insertTeamReview(teamReview)
             }
         }
     }
 
-    fun getTeamReviewList(): List<TeamReview> {
+    fun getTeamReviewList(): List<TeamEvent> {
         return SoccerLeagueDatabase.getSoccerLeague(context).getTeamEventDAO().getTeamReviewList()
     }
 
