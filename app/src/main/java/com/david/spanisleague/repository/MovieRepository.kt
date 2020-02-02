@@ -44,7 +44,7 @@ class MovieRepository(private val context: Context) {
 
     private fun insertMovieReviewListIntoDatabase(response: Response<MovieResponse>) {
         if (response.body() != null) {
-            for (movieReview: MovieReview in response.body()!!.countrys) {
+            for (movieReview: MovieReview in response.body()!!.teams) {
                 movieDatabase.insertMovieReview(movieReview)
             }
         }

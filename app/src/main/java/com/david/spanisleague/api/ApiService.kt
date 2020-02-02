@@ -23,7 +23,7 @@ interface ApiService {
      * getMovieReviewListFromInternet
      * In this interface the token or api_key of themoviedb.com URL is passed as a parameter and returns a call of type MovieResponse
      */
-    @GET("/api/v1/json/1/search_all_leagues.php?c=Spain&s=Soccer")
+    @GET("/api/v1/json/1/search_all_teams.php?l=English%20Premier%20League")
     fun getMovieReviewListFromInternet(): Call<MovieResponse>
 
     companion object {

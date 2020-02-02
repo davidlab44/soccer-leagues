@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Movie Review</string>
+    <string name="app_name">Spanish League</string>
     <string name="imageItem">Thumbnail image of the movie is shown here</string>
     <string name="originalTitle">Original Title</string>
     <string name="average">Average</string>

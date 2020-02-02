@@ -13,7 +13,8 @@ import androidx.room.RoomDatabase
  *
  * @author david.mazo
  */
-@Database(entities = [MovieReview::class], version = 3, exportSchema = false)
+
+@Database(entities = [MovieReview::class], version = 4, exportSchema = false)
 abstract class MovieReviewDatabase : RoomDatabase() {
 
     abstract fun getMovieDAO(): MovieDao
