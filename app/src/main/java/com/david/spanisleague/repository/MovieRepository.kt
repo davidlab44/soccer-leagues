@@ -13,13 +13,13 @@ import retrofit2.Callback
 import retrofit2.Response
 
 /**
- * MovieRepository
+ * Soccer Leagues Repository
  *
  * This Class returns the data to the MainActivity
  * a requestMovieReviewList method is created and asks if there is access to the internet performs a callback.enqueue,
  * through retrofit and populates the bd implemented with room
  *
- * @author juan.rendon
+ * @author david.mazo
  */
 class MovieRepository(private val context: Context) {
 

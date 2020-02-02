@@ -26,16 +26,6 @@
                 android:text="@string/movie_detail"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-            <RatingBar
-                android:id="@+id/rating_bar_average"
-                style="?android:attr/ratingBarStyleIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:isIndicator="true"
-                android:numStars="5"
-                android:stepSize="0.01"
-                android:text="@string/average" />
-
             <TextView
                 android:id="@+id/text_view_average"
                 android:layout_width="wrap_content"
