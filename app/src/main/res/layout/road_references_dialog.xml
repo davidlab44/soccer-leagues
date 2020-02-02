@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayoutRoadReferencesDialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/dialogFragmentTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONDOR PRUEBA"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONDOR PRUEBA"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONDOR PRUEBA"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONDOR PRUEBA"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONDOR PRUEBA"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONDOR PRUEBA"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONDOR PRUEBA"/><TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="CONDOR PRUEBA"/><TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="CONDOR PRUEBA"/><TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="CONDOR PRUEBA"
+    android:textColor="@color/black"/>
+
+
+
+
+
+
+</LinearLayout>

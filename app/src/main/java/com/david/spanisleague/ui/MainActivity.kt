@@ -22,6 +22,7 @@ import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar.make
 import kotlinx.android.synthetic.main.activity_main.constraintLayoutMainActivity
 import kotlinx.android.synthetic.main.activity_main.recyclerView
+import kotlinx.android.synthetic.main.road_references_dialog.*
 
 class MainActivity : AppCompatActivity(), MovieReviewEvents {
 
@@ -37,6 +38,22 @@ class MainActivity : AppCompatActivity(), MovieReviewEvents {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initComponents()
+        launchDialogFragment("SOCCER LEAGUE CONDOR")
+    }
+
+    private fun launchDialogFragment(trigger: String) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        val prev = supportFragmentManager.findFragmentByTag("dialog")
+        if (prev != null) {
+            fragmentTransaction.remove(prev)
+        }
+        fragmentTransaction.addToBackStack(null)
+        val dialogFragment = RoadReferencesDialogFragment(application)
+        val dialogFragmentBundle = Bundle()
+        dialogFragmentBundle.putString("trigger", trigger)
+        dialogFragment.arguments = dialogFragmentBundle
+        dialogFragment.show(fragmentTransaction, "dialog")
+
     }
 
     private fun initComponents() {
