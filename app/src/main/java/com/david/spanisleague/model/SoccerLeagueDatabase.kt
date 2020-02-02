@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 /**
- * MovieReviewDatabase
+ * SoccerLeagueDatabase
  *
  * We can use it to create other classes
  * It is abstract because it is implemented by Room
@@ -14,15 +14,15 @@ import androidx.room.RoomDatabase
  * @author david.mazo
  */
 
-@Database(entities = [MovieReview::class,TeamReview::class], version = 10, exportSchema = false)
-abstract class MovieReviewDatabase : RoomDatabase() {
+@Database(entities = [MovieReview::class,TeamReview::class], version = 11, exportSchema = false)
+abstract class SoccerLeagueDatabase : RoomDatabase() {
 
     abstract fun getMovieDAO(): MovieDao
     abstract fun getTeamEventDAO(): TeamDao
 
     companion object {
         fun getMovieDatabase(context: Context) = Room.databaseBuilder(context.applicationContext,
-                MovieReviewDatabase::class.java, "MovieReviewDatabase")
+                SoccerLeagueDatabase::class.java, "SoccerLeagueDatabase")
                 .allowMainThreadQueries()
                 .build()
     }

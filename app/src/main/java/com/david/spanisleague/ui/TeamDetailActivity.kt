@@ -9,20 +9,20 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.david.spanisleague.model.MovieReview
-import com.david.spanisleague.model.MovieReviewDatabase.Companion.getMovieDatabase
+import com.david.spanisleague.model.SoccerLeagueDatabase.Companion.getMovieDatabase
 import com.david.spanisleague.model.TeamReview
 import com.david.spanisleague.repository.TeamRepository
 import com.david.spanisleague.utils.ID_MOVIE
 import kotlinx.android.synthetic.main.detail_item.*
 
 /**
- * TeamDetail
+ * TeamDetailActivity
  *
  * Show the detail of a selected movie in the recyclerView of the MainActivity
  *
  * @author juan.rendon
  */
-class TeamDetail : AppCompatActivity() {
+class TeamDetailActivity : AppCompatActivity() {
 
     private lateinit var teamRepository: TeamRepository
     private lateinit var adapter: ArrayAdapter<TeamReview>
@@ -81,7 +81,7 @@ class TeamDetail : AppCompatActivity() {
 
     companion object {
         fun createIntent(context: Context): Intent {
-            return Intent(context, TeamDetail::class.java)
+            return Intent(context, TeamDetailActivity::class.java)
         }
     }
 }

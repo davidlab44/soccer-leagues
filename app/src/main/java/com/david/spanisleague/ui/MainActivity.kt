@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity(), MovieReviewEvents {
     }
 
     override fun onItemClicked(movieReview: MovieReview) {
-        val intent: Intent = TeamDetail.createIntent(this@MainActivity)
+        val intent: Intent = TeamDetailActivity.createIntent(this@MainActivity)
         intent.putExtra(ID_MOVIE, movieReview.id)
         startActivity(intent)
     }

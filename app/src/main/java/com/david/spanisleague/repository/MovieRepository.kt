@@ -7,8 +7,7 @@ import com.david.spanisleague.api.ApiService
 import com.david.spanisleague.model.MovieDao
 import com.david.spanisleague.model.MovieResponse
 import com.david.spanisleague.model.MovieReview
-import com.david.spanisleague.model.MovieReviewDatabase
-import com.david.spanisleague.utils.API_KEY
+import com.david.spanisleague.model.SoccerLeagueDatabase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,7 +24,7 @@ import retrofit2.Response
 class MovieRepository(private val context: Context) {
 
     private val apiService = ApiService.instance
-    private val movieDatabase: MovieDao get() = MovieReviewDatabase.getMovieDatabase(context).getMovieDAO()
+    private val movieDatabase: MovieDao get() = SoccerLeagueDatabase.getMovieDatabase(context).getMovieDAO()
 
     /*
     fun requestMovieReviewList(league:String): List<MovieReview> {
@@ -73,11 +72,11 @@ class MovieRepository(private val context: Context) {
     }
 
     fun getMovieReviewList(): List<MovieReview> {
-        return MovieReviewDatabase.getMovieDatabase(context).getMovieDAO().getMovieReviewList()
+        return SoccerLeagueDatabase.getMovieDatabase(context).getMovieDAO().getMovieReviewList()
     }
 
 
     fun deleteMovieReviewList() {
-        return MovieReviewDatabase.getMovieDatabase(context).getMovieDAO().deleteAllSoccerLeague()
+        return SoccerLeagueDatabase.getMovieDatabase(context).getMovieDAO().deleteAllSoccerLeague()
     }
 }
