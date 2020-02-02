@@ -95,6 +95,7 @@
                 tools:text="Overview"/>
 
             <TextView
+                android:id="@+id/textViewSocialNetwork"
                 android:text="@string/social_networks_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -46,6 +47,8 @@ class TeamDetailActivity : AppCompatActivity() {
         textViewStrDescriptionEN.text = soccerLeague.strDescriptionEN
         textViewIntFormedYear.text = "Foundated in ${soccerLeague.intFormedYear}"
         textViewWebsite.text = soccerLeague.strWebsite
+        if(soccerLeague.strFacebook!!.isBlank() && soccerLeague.strTwitter!!.isBlank() && soccerLeague.strInstagram!!.isBlank())
+            textViewSocialNetwork.visibility = View.INVISIBLE
         textViewFacebook.text = soccerLeague.strFacebook
         textViewTwitter.text = soccerLeague.strTwitter
         textViewInstagram.text = soccerLeague.strInstagram
