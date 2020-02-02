@@ -50,11 +50,11 @@ class TeamDetail : AppCompatActivity() {
     private fun bindMovieReview(movieReview: MovieReview) {
         textViewStrTeam.text = movieReview.strTeam
         textViewStrDescriptionEN.text = movieReview.strDescriptionEN
-        textViewIntFormedYear.text = movieReview.intFormedYear
-        text_view_website.text = movieReview.strWebsite
-        text_view_facebook.text = movieReview.strFacebook
-        text_view_twitter.text = movieReview.strTwitter
-        text_view_instagram.text = movieReview.strInstagram
+        textViewIntFormedYear.text = "Foundated in ${movieReview.intFormedYear}"
+        textViewWebsite.text = movieReview.strWebsite
+        textViewFacebook.text = movieReview.strFacebook
+        textViewTwitter.text = movieReview.strTwitter
+        textViewInstagram.text = movieReview.strInstagram
         Glide.with(imageViewStrTeamBadge)
                 .load(movieReview.strTeamBadge)
                 .centerCrop()
