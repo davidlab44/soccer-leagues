@@ -22,7 +22,21 @@ data class MovieReview(
         @SerializedName("strStadium")
         var strStadium: String?,
         @SerializedName("strTeamBadge")
-        var strTeamBadge: String?
+        var strTeamBadge: String?,
+        @SerializedName("strDescriptionEN")
+        var strDescriptionEN: String?,
+        @SerializedName("intFormedYear")
+        var intFormedYear: String?,
+        @SerializedName("strTeamJersey")
+        var strTeamJersey: String?,
+        @SerializedName("strWebsite")
+        var strWebsite: String?,
+        @SerializedName("strFacebook")
+        var strFacebook: String?,
+        @SerializedName("strTwitter")
+        var strTwitter: String?,
+        @SerializedName("strInstagram")
+        var strInstagram: String?
         /*
         var video: String?,
         var adult: String?,

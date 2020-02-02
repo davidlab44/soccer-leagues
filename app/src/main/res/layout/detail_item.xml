@@ -50,6 +50,38 @@
                 android:layout_height="wrap_content"
                 tools:text="Overview" />
 
+            <TextView
+                android:id="@+id/text_view_website"
+                android:autoLink="all"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Overview" />
+
+            <TextView
+                android:id="@+id/text_view_facebook"
+                android:autoLink="all"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Overview" />
+
+            <TextView
+                android:id="@+id/text_view_twitter"
+                android:autoLink="all"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Overview" />
+
+            <TextView
+                android:id="@+id/text_view_instagram"
+                android:autoLink="all"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Overview" />
+
             <ImageView
                 android:id="@+id/image_view_ic_star"
                 android:layout_width="wrap_content"

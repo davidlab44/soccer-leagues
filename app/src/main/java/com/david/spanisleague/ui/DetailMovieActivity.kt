@@ -9,13 +9,7 @@ import com.bumptech.glide.Glide
 import com.david.spanisleague.model.MovieReview
 import com.david.spanisleague.model.MovieReviewDatabase.Companion.getMovieDatabase
 import com.david.spanisleague.utils.ID_MOVIE
-import kotlinx.android.synthetic.main.detail_item.image_view_ic_star
-import kotlinx.android.synthetic.main.detail_item.image_view_movie_picture
-import kotlinx.android.synthetic.main.detail_item.text_view_average
-import kotlinx.android.synthetic.main.detail_item.text_view_movie_title
-import kotlinx.android.synthetic.main.detail_item.text_view_summary
-import kotlinx.android.synthetic.main.detail_item.text_view_title_release_date
-
+import kotlinx.android.synthetic.main.detail_item.*
 
 /**
  * DetailMovieActivity
@@ -29,27 +23,31 @@ class DetailMovieActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(com.david.spanisleague.R.layout.detail_item)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        //val idMovieReview = getMovieDatabase(this).getMovieDAO().getMovieReviewDetail(intent.getIntExtra(ID_MOVIE, 0))
-        //bindMovieReview(idMovieReview)
+        val idMovieReview = getMovieDatabase(this).getMovieDAO().getMovieReviewDetail(intent.getIntExtra(ID_MOVIE, 0))
+        bindMovieReview(idMovieReview)
     }
 
     private fun bindMovieReview(movieReview: MovieReview) {
         text_view_movie_title.text = movieReview.strTeam
         text_view_title_release_date.text = movieReview.strStadium
         text_view_summary.text = movieReview.strTeam
+        text_view_website.text = movieReview.strWebsite
+        text_view_facebook.text = movieReview.strFacebook
+        text_view_twitter.text = movieReview.strTwitter
+        text_view_instagram.text = movieReview.strInstagram
         //rating_bar_average.rating = movieReview.voteAverage.toFloat() / getFactorMovieReviewRating()
         //text_view_average.text = (movieReview.voteAverage.toFloat() / getFactorMovieReviewRating()).toString()
         Glide.with(image_view_movie_picture)
                 .load(movieReview.strTeamBadge)
                 .centerCrop()
                 .fitCenter()
-                .override(1000, 1000)
+                .override(200, 200)
                 .into(image_view_movie_picture)
         Glide.with(image_view_ic_star)
                 .load(movieReview.strTeamBadge)
                 .centerCrop()
                 .fitCenter()
-                .override(1000, 1000)
+                .override(200, 200)
                 .into(image_view_ic_star)
     }
 
