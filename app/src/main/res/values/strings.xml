@@ -1,12 +1,13 @@
 <resources>
-    <string name="app_name">UsersAndPosts</string>
-    <string name="edit_text_search">Buscar usuario</string>
-    <string name="btn_view_posts">Ver publicaciones</string>
-    <string name="btn_view_comments">Ver comentarios</string>
-    <string name="generic_message_progress">Por favor espere...</string>
-    <string name="generic_error">Ha ocurrido un error inesperado</string>
-    <string name="accept">Aceptar</string>
-    <string name="list_is_empty">List is empty</string>
+    <string name="app_name">Movie Review</string>
+    <string name="imageItem">Thumbnail image of the movie is shown here</string>
+    <string name="originalTitle">Original Title</string>
+    <string name="average">Average</string>
+    <string name="release_date">Release date</string>
+    <string name="movie_detail">Movie Detail</string>
+    <string name="no_movies">There are no movies</string>
     <string name="error_tag">Error</string>
-    <string name="error_response_code_different_to_200">Response code different to 200</string>
+    <string name="error_response_code_different_to_200">Response code != 200</string>
+    <string name="movie_review_database_updated">Local movie review list updated</string>
+    <string name="not_network_connection">There is not network connection</string>
 </resources>
