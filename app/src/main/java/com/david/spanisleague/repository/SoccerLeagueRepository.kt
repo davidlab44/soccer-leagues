@@ -3,7 +3,7 @@ package com.david.spanisleague.repository
 import android.content.Context
 import android.util.Log
 import com.david.spanisleague.R
-import com.david.spanisleague.api.ApiService
+import com.david.spanisleague.api.ApiRequest
 import com.david.spanisleague.model.SoccerLeagueDao
 import com.david.spanisleague.model.SoccerLeagueResponse
 import com.david.spanisleague.model.SoccerLeague
@@ -23,7 +23,7 @@ import retrofit2.Response
  */
 class SoccerLeagueRepository(private val context: Context) {
 
-    private val apiService = ApiService.instance
+    private val apiService = ApiRequest.instance
     private val soccerLeagueDatabase: SoccerLeagueDao get() = SoccerLeagueDatabase.getSoccerLeague(context).getSoccerLeagueDAO()
 
     fun requestMovieReviewList(league:String): List<SoccerLeague> {

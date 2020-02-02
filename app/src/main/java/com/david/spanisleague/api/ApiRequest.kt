@@ -10,14 +10,14 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 /**
- * ApiService
+ * ApiRequest
  *
  * This Interface calls an API with list of SoccerLeagues
  *
  * @author david.mazo
  */
 
-interface ApiService {
+interface ApiRequest {
 
     @GET("api/v1/json/1/search_all_teams.php?")
     fun getMovieReviewListFromInternet(@Query("l") l: String): Call<SoccerLeagueResponse>
@@ -26,9 +26,9 @@ interface ApiService {
     fun getTeamListFromInternet(@Query("id") id: String?): Call<TeamResponse>
 
     companion object {
-        val instance: ApiService = Retrofit.Builder()
+        val instance: ApiRequest = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .build().create(ApiService::class.java)
+                .build().create(ApiRequest::class.java)
     }
 }

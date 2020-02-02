@@ -3,7 +3,7 @@ package com.david.spanisleague.repository
 import android.content.Context
 import android.util.Log
 import com.david.spanisleague.R
-import com.david.spanisleague.api.ApiService
+import com.david.spanisleague.api.ApiRequest
 import com.david.spanisleague.model.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,7 +20,7 @@ import retrofit2.Response
  */
 class TeamRepository(private val context: Context) {
 
-    private val apiService = ApiService.instance
+    private val apiService = ApiRequest.instance
     private val movieDatabase: TeamDao get() = SoccerLeagueDatabase.getSoccerLeague(context).getTeamEventDAO()
 
     fun requestTeamReviewList(idTeam:String?): List<TeamReview> {
