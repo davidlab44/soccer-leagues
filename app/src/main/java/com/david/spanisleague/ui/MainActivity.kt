@@ -11,17 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.david.spanisleague.R
 import com.david.spanisleague.data.local.SoccerLeague
 import com.david.spanisleague.data.local.SoccerLeagueDao
 import com.david.spanisleague.data.local.SoccerLeagueDatabase
 import com.david.spanisleague.repository.SoccerLeagueRepository
 import com.david.spanisleague.utils.ID_SOCCER_LEAGUE
-import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
-import com.google.android.material.snackbar.Snackbar.make
-import kotlinx.android.synthetic.main.activity_main.constraintLayoutMainActivity
 import kotlinx.android.synthetic.main.activity_main.recyclerView
 
 class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
@@ -30,26 +25,24 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
     private lateinit var soccerLeagueRepository: SoccerLeagueRepository
     private lateinit var soccerLeagueListAdapter: SoccerLeagueListAdapter
 
-    private val myViewModel by lazy {
-        return@lazy ViewModelProviders.of(this).get(MyViewModel::class.java)
+    private val soccerLeagueViewModel by lazy {
+        return@lazy ViewModelProviders.of(this).get(SoccerLeagueViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         launchDialogFragment(R.string.app_name, R.drawable.soccer_leagues)
-        myViewModel.callApi("Spanish La Liga")
+        soccerLeagueViewModel.callApi("Spanish La Liga")
         observeResponseData()
     }
 
     private fun observeResponseData() {
-        myViewModel.liveData.observe(this, Observer { data ->
+        soccerLeagueViewModel.soccerLeagueLiveData.observe(this, Observer { data ->
             if (hasConnection()) {
                 SoccerLeagueDatabase.getSoccerLeague(applicationContext).getSoccerLeagueDAO().deleteAllSoccerLeague()
-                val datos = data
-                Log.e("tag219","mesage"+data)
                 val soccerLeagueDatabase: SoccerLeagueDao = SoccerLeagueDatabase.getSoccerLeague(application.applicationContext).getSoccerLeagueDAO()
-                for (soccerLeague: SoccerLeague in datos.teams) {
+                for (soccerLeague: SoccerLeague in data.teams) {
                     soccerLeagueDatabase.insertMovieReview(soccerLeague)
                 }
                 soccerLeagueListAdapter = SoccerLeagueListAdapter(this)
@@ -92,15 +85,15 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.spanish_league -> {
-                myViewModel.callApi("Spanish La Liga")
+                soccerLeagueViewModel.callApi("Spanish La Liga")
                 return true
             }
             R.id.german_bundesliga -> {
-                myViewModel.callApi("German Bundesliga")
+                soccerLeagueViewModel.callApi("German Bundesliga")
                 return true
             }
-            R.id.portuguese_primeira_liga -> {
-                myViewModel.callApi("Portuguese Primeira Liga")
+            R.id.english_league -> {
+                soccerLeagueViewModel.callApi("English Premier League")
                 return true
             }
             else -> super.onOptionsItemSelected(item)

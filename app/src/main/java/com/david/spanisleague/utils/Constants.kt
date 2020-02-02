@@ -7,12 +7,13 @@ package com.david.spanisleague.utils
  *
  * @author david.mazo
  */
-const val LINEAR_LAYOUT: Int = 1
-const val GRILL_LAYOUT: Int = 2
-const val STAGGERED_LAYOUT: Int = 3
+
 const val ID_SOCCER_LEAGUE: String = "idMovie"
 const val BASE_URL = "https://www.thesportsdb.com/"
 const val API_KEY = "English Premier League"
-const val VOTE_MAX = 10
-const val RATING_MAX = 5
 const val SPLASH_TIME_OUT = 1900
+const val TAG_ON_FAILURE = "failure"
+const val SEARCH_ALL_TEAMS = "api/v1/json/1/search_all_teams.php?"
+const val NEXT_EVENTS = "api/v1/json/1/eventsnext.php?"
+const val LEAGUE ="l"
+const val ID_TEAM = "id"

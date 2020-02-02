@@ -10,6 +10,7 @@ import com.david.spanisleague.data.local.SoccerLeagueResponse
 import com.david.spanisleague.data.local.SoccerLeague
 import com.david.spanisleague.data.local.SoccerLeagueDatabase
 import com.david.spanisleague.utils.SPLASH_TIME_OUT
+import com.david.spanisleague.utils.TAG_ON_FAILURE
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
@@ -34,7 +35,7 @@ class SoccerLeagueRepository() {
     fun requestMovieReviewList(league:String,liveData: MutableLiveData<SoccerLeagueResponse>) {
         apiService.getMovieReviewListFromInternet(league).enqueue(object : Callback<SoccerLeagueResponse> {
             override fun onFailure(call: Call<SoccerLeagueResponse>, t: Throwable) {
-                Log.e("TAG", t.printStackTrace().toString())
+                Log.e(TAG_ON_FAILURE, t.printStackTrace().toString())
             }
 
             override fun onResponse(call: Call<SoccerLeagueResponse>, response: Response<SoccerLeagueResponse>) {
