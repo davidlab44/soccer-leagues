@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.david.spanisleague.R
 import com.david.spanisleague.data.local.SoccerLeague
+import com.david.spanisleague.data.local.SoccerLeagueDao
+import com.david.spanisleague.data.local.SoccerLeagueDatabase
 import com.david.spanisleague.repository.SoccerLeagueRepository
 import com.david.spanisleague.utils.ID_SOCCER_LEAGUE
 import com.google.android.material.snackbar.Snackbar.LENGTH_LONG
@@ -37,7 +39,6 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         launchDialogFragment(R.string.app_name, R.drawable.soccer_leagues)
         myViewModel.callApi() // You can do it anywhere, on button click etc..
         observeResponseData() // observe it once in onCreate(), it'll respect your activity lifecycle
@@ -48,6 +49,16 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
             // here will be your response
             val datos = data
             Log.e("tag219","mesage"+data)
+            val soccerLeagueDatabase: SoccerLeagueDao = SoccerLeagueDatabase.getSoccerLeague(application.applicationContext).getSoccerLeagueDAO()
+            for (soccerLeague: SoccerLeague in datos.teams) {
+                soccerLeagueDatabase.insertMovieReview(soccerLeague)
+            }
+            soccerLeagueListAdapter = SoccerLeagueListAdapter(this)
+            gridLayoutManager = GridLayoutManager(this, 2)
+            recyclerView.layoutManager = gridLayoutManager
+            recyclerView.adapter = soccerLeagueListAdapter
+            soccerLeagueRepository = SoccerLeagueRepository()
+            soccerLeagueListAdapter.addAll(SoccerLeagueDatabase.getSoccerLeague(application.applicationContext).getSoccerLeagueDAO().getMovieReviewList())
         })
     }
 
