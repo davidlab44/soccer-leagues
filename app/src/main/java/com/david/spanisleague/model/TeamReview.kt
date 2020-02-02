@@ -19,8 +19,8 @@ data class TeamReview(
         var id: Int,
         @SerializedName("strEvent")
         var strEvent: String?
-){
-        override fun toString(): String {
-                return strEvent.toString()
-        }
+) {
+    override fun toString(): String {
+        return strEvent.toString()
+    }
 }

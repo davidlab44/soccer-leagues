@@ -32,15 +32,10 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setRecyclerViewSoccerLeagues("Spanish La Liga")
-        launchDialogFragment(R.string.app_name,R.drawable.soccer_leagues)
-        val idMovieReview = SoccerLeagueDatabase.getSoccerLeague(this).getSoccerLeagueDAO().getSoccerLeagueDetail(intent.getIntExtra(ID_SOCCER_LEAGUE, 0))
-
-        val idMovieReview2 = SoccerLeagueDatabase.getSoccerLeague(this).getSoccerLeagueDAO().getSoccerLeagueDetail(intent.getIntExtra(ID_SOCCER_LEAGUE, 0))
-
-
+        launchDialogFragment(R.string.app_name, R.drawable.soccer_leagues)
     }
 
-    private fun launchDialogFragment(name: Int,image:Int) {
+    private fun launchDialogFragment(name: Int, image: Int) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         val prev = supportFragmentManager.findFragmentByTag("dialog")
         if (prev != null) {
@@ -55,7 +50,7 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
         dialogFragment.show(fragmentTransaction, "dialog")
     }
 
-    private fun setRecyclerViewSoccerLeagues(league:String) {
+    private fun setRecyclerViewSoccerLeagues(league: String) {
         soccerLeagueListAdapter = SoccerLeagueListAdapter(this)
         gridLayoutManager = GridLayoutManager(this, 2)
         linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -79,15 +74,15 @@ class MainActivity : AppCompatActivity(), SoccerLeagueEvents {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.spanish_league ->{
+            R.id.spanish_league -> {
                 setRecyclerViewSoccerLeagues("Spanish La Liga")
                 return true
             }
-            R.id.german_bundesliga ->{
+            R.id.german_bundesliga -> {
                 setRecyclerViewSoccerLeagues("German Bundesliga")
                 return true
             }
-            R.id.portuguese_primeira_liga ->{
+            R.id.portuguese_primeira_liga -> {
                 setRecyclerViewSoccerLeagues("Portuguese Primeira Liga")
                 return true
             }

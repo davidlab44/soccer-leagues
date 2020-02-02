@@ -13,7 +13,7 @@ import com.david.spanisleague.model.SoccerLeagueDatabase.Companion.getSoccerLeag
 import com.david.spanisleague.model.TeamReview
 import com.david.spanisleague.repository.TeamRepository
 import com.david.spanisleague.utils.ID_SOCCER_LEAGUE
-import kotlinx.android.synthetic.main.detail_item.*
+import kotlinx.android.synthetic.main.team_detail_activity.*
 
 /**
  * TeamDetailActivity
@@ -29,7 +29,7 @@ class TeamDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.david.spanisleague.R.layout.detail_item)
+        setContentView(com.david.spanisleague.R.layout.team_detail_activity)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val idSoccerLeague = getSoccerLeague(this).getSoccerLeagueDAO().getSoccerLeagueDetail(intent.getIntExtra(ID_SOCCER_LEAGUE, 0))
         bindSoccerLeague(idSoccerLeague)
@@ -47,7 +47,7 @@ class TeamDetailActivity : AppCompatActivity() {
         textViewStrDescriptionEN.text = soccerLeague.strDescriptionEN
         textViewIntFormedYear.text = "Foundated in ${soccerLeague.intFormedYear}"
         textViewWebsite.text = soccerLeague.strWebsite
-        if(soccerLeague.strFacebook!!.isBlank() && soccerLeague.strTwitter!!.isBlank() && soccerLeague.strInstagram!!.isBlank())
+        if (soccerLeague.strFacebook!!.isBlank() && soccerLeague.strTwitter!!.isBlank() && soccerLeague.strInstagram!!.isBlank())
             textViewSocialNetwork.visibility = View.INVISIBLE
         textViewFacebook.text = soccerLeague.strFacebook
         textViewTwitter.text = soccerLeague.strTwitter

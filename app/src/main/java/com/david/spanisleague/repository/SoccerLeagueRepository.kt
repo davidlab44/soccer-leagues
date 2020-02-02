@@ -26,12 +26,11 @@ class SoccerLeagueRepository(private val context: Context) {
     private val apiService = ApiRequest.instance
     private val soccerLeagueDatabase: SoccerLeagueDao get() = SoccerLeagueDatabase.getSoccerLeague(context).getSoccerLeagueDAO()
 
-    fun requestMovieReviewList(league:String): List<SoccerLeague> {
+    fun requestMovieReviewList(league: String): List<SoccerLeague> {
         apiService.getMovieReviewListFromInternet(league).enqueue(object : Callback<SoccerLeagueResponse> {
             override fun onResponse(callSoccerLeagueResponse: Call<SoccerLeagueResponse>, response: Response<SoccerLeagueResponse>) {
                 when (response.code()) {
                     200 -> {
-
                         insertMovieReviewListIntoDatabase(response)
                     }
                     else -> Log.e(context.getString(R.string.error_tag), context.getString(R.string.error_response_code_different_to_200))
